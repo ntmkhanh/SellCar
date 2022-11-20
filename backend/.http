@@ -1,0 +1,14 @@
+POST http://localhost:3000/api/users
+###
+POST http://localhost:3000/api/users
+content-type: application/json
+
+{
+    "user_id": 1,
+    "user_name": "Nguyen Thi My Khanh",
+    "user_email": "khanhb1910657@student.ctu.edu.vn",
+    "user_phone": 0976038762,
+    "user_password": 123456,
+    "user_birth": 01-01-2001,
+    "user_gender": "female"
+}
