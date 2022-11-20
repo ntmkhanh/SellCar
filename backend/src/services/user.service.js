@@ -23,17 +23,15 @@ class UserService {
         const [id] = await this.users.insert(user);
         return{id, ...user};
     }
-    /*
-    exports.insertUser = (data, result) => {
-        db.query("INSERT INTO user SET ?", data, (err, results) => {
-            if (err) {
-                console.log(err);
-                result(err, null);
-            } else {
-                result(null, results[0]);
-            }
-        });
-    };*/
+    //findAll user
+    async all(){
+        return await this.users.select('*');
+    }
+    async findByName(name){
+        return await this.users
+            .where('name', 'like', `%${name}%`)
+            .select('*');
+    }
 }
 module.exports = UserService;
 

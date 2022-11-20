@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
 
 app.route('/api/users')
     .post(userController.createAccount)
+    .get(userController.findAll)
 
 
 module.exports = app;

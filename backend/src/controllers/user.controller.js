@@ -1,17 +1,6 @@
 const UserService = require('../services/user.service');
 
-// create user
-/*
-exports.createAccount=(req,res)=>{
-    const data = req.body;
-    insertUser(data,(err,results)=> {
-        if (err) {
-            res.send(err);
-        }else {
-            res.json(results);
-        }
-    });
-};*/
+
 exports.createAccount = async(req, res, next) => {
     if(!req.body?.user_name){
         //return next(new ApiError(400, 'Name can not be empty'));
@@ -26,4 +15,25 @@ exports.createAccount = async(req, res, next) => {
             //new ApiError(500, 'An error occurred while creating the contact')
         );
     }
+};
+exports.findAll = async (req, res, next) => {
+    let users = []
+
+    try {
+        const userService = new UserService()
+        const { name } = req.query
+        if (name) {
+            //users = await userService.findByName(name)
+        } else {
+            user = await userService.all()
+        }
+
+    } catch(error) {
+        console.log(error)
+        return next(
+            //new ApiError(500, 'An error occurred while retrieving contacts')
+        )
+    }
+
+    return res.send(users)
 };
