@@ -42,3 +42,13 @@ content-type: application/json
     "car_category": "a",
     "car_src": "a"
 }
+
+###
+POST http://localhost:3000/api/books HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 2,
+    "car_id": 1,
+    "item_quantity": 2
+}
