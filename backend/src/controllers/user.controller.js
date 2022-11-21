@@ -23,9 +23,9 @@ exports.findAll = async (req, res, next) => {
         const userService = new UserService()
         const { name } = req.query
         if (name) {
-            //users = await userService.findByName(name)
+            users = await userService.findByName(name)
         } else {
-            user = await userService.all()
+            users = await userService.all()
         }
 
     } catch(error) {
@@ -36,4 +36,23 @@ exports.findAll = async (req, res, next) => {
     }
 
     return res.send(users)
+};
+//find a singla contact with an id
+exports.findOne = async (req, res, next) => {
+    try {
+        const userService = new UserService()
+        const user = await userService.findById(req.params.id)
+        if (!user) {
+            //return next(new ApiError(404, 'Contact not found'))
+        }
+        return res.send(user)
+    } catch(error) {
+        console.log(error)
+        return next(
+            // new ApiError(
+            //     500,
+            //     `Error retrieving contact with id=${req.params.id}`
+            // )
+        );
+    }
 };

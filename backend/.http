@@ -1,6 +1,8 @@
-POST http://localhost:3000/api/users
+GET http://localhost:3000/api/users HTTP/1.1
 ###
-POST http://localhost:3000/api/users HTTP/1.1
+GET http://localhost:3000/api/users?name=Khanh HTTP/1.1
+###
+GET http://localhost:3000/api/users HTTP/1.1
 content-type: application/json
 
 {
@@ -11,4 +13,32 @@ content-type: application/json
     "user_password": "123456",
     "user_birth": "01-01-2001",
     "user_gender": "female"
+}
+
+###
+POST http://localhost:3000/api/users HTTP/1.1
+content-type: application/json
+
+{
+    "user_id": 1,
+    "user_name": "Nguyen Hieu Nghia",
+    "user_email": "nghia0976038762",
+    "user_password": "123456",
+    "user_birth": "01-01-2001",
+    "user_gender": "male"
+}
+###
+POST http://localhost:3000/api/cars HTTP/1.1
+content-type: application/json
+
+{
+    "car_id": 1,
+    "car_name": "merBen",
+    "car_price": "100000",
+    "car_discount": "50000",
+    "car_desc": "abc",
+    "car_status": "best seller",
+    "car_type": "seden",
+    "car_category": "a",
+    "car_src": "a"
 }

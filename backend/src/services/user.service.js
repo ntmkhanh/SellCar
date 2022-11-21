@@ -29,8 +29,11 @@ class UserService {
     }
     async findByName(name){
         return await this.users
-            .where('name', 'like', `%${name}%`)
+            .where('user_name', 'like', `%${name}%`)
             .select('*');
+    }
+    async findById(id){
+        return await this.users.where('user_id', id).select('*').first();
     }
 }
 module.exports = UserService;

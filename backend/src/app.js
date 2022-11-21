@@ -1,6 +1,8 @@
 const express = require('express')
 const cors = require('cors')
-const userController = require('../src/controllers/user.controller')
+const userController = require('../src/controllers/user.controller');
+const CarController = require('../src/controllers/car.controller');
+
 
 const app = express();
 
@@ -15,7 +17,11 @@ app.route('/api/users')
     .post(userController.createAccount)
     .get(userController.findAll)
 
-
+app.route('/api/users/:id')
+    .get(userController.findOne)
+    
+app.route('/api/cars')
+    .post(CarController.createCar)
 module.exports = app;
 
 
