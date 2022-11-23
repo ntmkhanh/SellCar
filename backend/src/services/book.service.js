@@ -7,9 +7,9 @@ class BookService {
     #getBook(payload) {
         const book = { ...payload };
         const bookProperties = [
-            "user_id", "car_id", "item_quantity"
+            "book_id", "user_id", "car_id", "itemcar_quantity"
         ];
-        //Remove non-contact properties
+        //Remove non-book properties
         Object.keys(book).forEach(function (key) {
             if (bookProperties.indexOf(key) == -1) {
                 delete book[key];
@@ -22,8 +22,18 @@ class BookService {
             const [id] = await this.books.insert(book);
             return{id, ...book};
         }
-        
-    
+        async all(){
+            return await this.books.select('*');
+        }
+        async findById(id){
+            return await this.books.where('book_id', id).select('*').first();
+        }
+        async delete (id){
+            return await this.books.where('book_id', id).del();
+        }
+        async deleteAll(){
+            return await this.books.del();
+        }
     };
 
 module.exports = BookService;
