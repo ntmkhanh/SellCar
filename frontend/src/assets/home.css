@@ -1,0 +1,25 @@
+.Showroomcar {
+    font-size: 60px;
+    font-style: italic;
+}
+
+p {
+    font-size: 30px;
+}
+
+.header {
+    padding: 0px;
+    height: 130px;
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.navar {}
+
+a {
+    font-size: 25px;
+}
+
+.form-control {
+    width: 300px;
+}
