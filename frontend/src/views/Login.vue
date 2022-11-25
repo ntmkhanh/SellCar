@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
     <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
       <h1 class="text-2xl font-bold text-gray-800 text-center">Sign In</h1>

@@ -1,3 +1,4 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
     <h1 class="text-2xl font-bold text-gray-800 text-center">Sign Up</h1>
@@ -141,7 +142,7 @@ export default {
                   user_birth: this.birth,
                   user_gender: this.password
                 });
-                this.message = 'Tài khoản được thêm thành công.';
+                this.message = 'Tài khoản được tạo thành công.';
             } catch (error) {
                 console.log(error);
             }
