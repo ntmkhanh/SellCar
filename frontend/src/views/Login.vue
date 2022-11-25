@@ -1,10 +1,11 @@
 <template>
     <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
       <h1 class="text-2xl font-bold text-gray-800 text-center">Sign In</h1>
-      <form class="flex flex-col justify-center" @submit.prevent="login">
+      <Form :validation-schema="formSchema" @submit.prevent="login">
         <div>
           <label class="block text-sm font-medium text-gray-700"> Email </label>
-          <input class="
+          <Field name="email" 
+                class="
                 mt-1
                 focus:ring-indigo-500 focus:border-indigo-500
                 block
@@ -14,10 +15,12 @@
                 border-gray-300
                 rounded-md
               " placeholder="Email..." type="email" v-model="email" />
+          <ErrorMessage name="email" class="text-sm text-red-800" />
         </div>
         <div class="flex flex-col mt-4">
           <label class="block text-sm font-medium text-gray-700"> Password </label>
-          <input class="
+          <Field name="password" 
+                class="
                 mt-1
                 focus:ring-indigo-500 focus:border-indigo-500
                 block
@@ -27,7 +30,8 @@
                 border-gray-300
                 rounded-md
               " placeholder="Password" type="password" v-model="password" />
-        </div>
+            <ErrorMessage name="password" class="text-sm text-red-800" />
+            </div>
         <!-- eslint-disable -->
         <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
           Sign In
@@ -37,6 +41,46 @@
     </div>
   </template>
   <script>
+  import * as yup from 'yup';
+  import { Form, Field, ErrorMessage } from 'vee-validate';
+  import { carService } from '@/services/car.service';
+  export default {
+      data() {
+          const formSchema = yup.object().shape({
+              email: yup
+                  .string()
+                  .required('Tên tài khoản không thể trống.')
+                  .max(50, 'Tên tài khoản không quá 50 kí tự'),
+              password: yup
+                  .string()
+                  .required('Mật khẩu không thể trống.')
+                  .min(6, 'Mật khẩu ít nhất 6 kí tự.'),
+          });
+          return ({
+              email: "",
+              password: "",
+              error: "",
+              formSchema
+          })
+      },
+      methods: {
+          async login() {
+              try {
+                  const user = await carService.signIn({
+                      email: this.email,
+                      password: this.password,
+                  });
+                  console.log("user", user);
+              } catch (error) {
+                  console.log(error);
+              }
+          }
+          
+      },
+      components: { Form, Field, ErrorMessage }
+  };
+  </script>
+ <!-- <script>
   import axios from 'axios'
   export default {
     data: () => ({
@@ -70,6 +114,5 @@
             }
         },
     },
-  };
-  
-</script>
+  }; 
+</script>-->
