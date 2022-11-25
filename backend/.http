@@ -32,8 +32,8 @@ POST http://localhost:3000/api/cars HTTP/1.1
 content-type: application/json
 
 {
-    "car_id": 1,
-    "car_name": "merBen",
+    "car_id": 2,
+    "car_name": "MerSen",
     "car_price": "100000",
     "car_discount": "50000",
     "car_desc": "abc",

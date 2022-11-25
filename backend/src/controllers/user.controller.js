@@ -1,9 +1,9 @@
 const UserService = require('../services/user.service');
-
+const ApiError = require('../api-error');
 
 exports.createAccount = async(req, res, next) => {
     if(!req.body?.user_name){
-        //return next(new ApiError(400, 'Name can not be empty'));
+        return next(new ApiError(400, 'Name can not be empty'));
     }
     try {
         const userService = new UserService();
@@ -12,7 +12,7 @@ exports.createAccount = async(req, res, next) => {
     } catch (error){
         console.log(error);
         return next(
-            //new ApiError(500, 'An error occurred while creating the contact')
+            new ApiError(500, 'An error occurred while creating the contact')
         );
     }
 };
@@ -31,7 +31,7 @@ exports.findAll = async (req, res, next) => {
     } catch(error) {
         console.log(error)
         return next(
-            //new ApiError(500, 'An error occurred while retrieving contacts')
+            new ApiError(500, 'An error occurred while retrieving contacts')
         )
     }
 
@@ -43,16 +43,16 @@ exports.findOne = async (req, res, next) => {
         const userService = new UserService()
         const user = await userService.findById(req.params.id)
         if (!user) {
-            //return next(new ApiError(404, 'Contact not found'))
+            return next(new ApiError(404, 'Contact not found'))
         }
         return res.send(user)
     } catch(error) {
         console.log(error)
         return next(
-            // new ApiError(
-            //     500,
-            //     `Error retrieving contact with id=${req.params.id}`
-            // )
+            new ApiError(
+                500,
+                `Error retrieving contact with id=${req.params.id}`
+            )
         );
     }
 };
