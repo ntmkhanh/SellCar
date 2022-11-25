@@ -1,7 +1,6 @@
 <script> 
   import AppHeader from '@/components/AppHeader.vue';
   import AppNavar from './components/AppNavar.vue';
-  import "@/assets/home.css"
   export default {
     components: {
       AppHeader,
@@ -10,10 +9,18 @@
   };
 </script> 
 
-<template> 
+<script setup>
+import '@/assets/home.css'
+</script>
 
-  <AppHeader />
-  <AppNavar />
+<template> 
+  <div id="app">
+    <div id="nav">
+      <AppHeader />
+      <!-- <AppNavar /> -->
+    </div>
+    <router-view />
+  </div>
 </template> 
 
 
