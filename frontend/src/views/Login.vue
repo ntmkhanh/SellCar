@@ -37,33 +37,33 @@
     </div>
   </template>
   <script>
-  import { mapActions, mapState } from "pinia";
-  import { useAuthStore } from "@/stores/auth/auth";
+  // import { mapActions, mapState } from "pinia";
+  // import { useAuthStore } from "@/stores/auth/auth";
   export default {
     data: () => ({
       email: "",
       password: "",
       error: "",
     }),
-    computed: {
-      // gives access to this.count inside the component
-      // same as reading from store.count
-      ...mapState(useAuthStore, ["user"]),
-      // same as above but registers it as this.myOwnName
-    },
-    methods: {
-      ...mapActions(useAuthStore, { loginVue: "login" }),
-      async login() {
-        try {
-          await this.loginVue({
-            email: this.email,
-            password: this.password,
-          });
-          this.$router.push("/albums");
-        } catch (error) {
-          this.error = error;
-        }
-      },
-    },
+    // computed: {
+    //   // gives access to this.count inside the component
+    //   // same as reading from store.count
+    //   ...mapState(useAuthStore, ["user"]),
+    //   // same as above but registers it as this.myOwnName
+    // },
+    // methods: {
+    //   ...mapActions(useAuthStore, { loginVue: "login" }),
+    //   async login() {
+    //     try {
+    //       await this.loginVue({
+    //         email: this.email,
+    //         password: this.password,
+    //       });
+    //       this.$router.push("/albums");
+    //     } catch (error) {
+    //       this.error = error;
+    //     }
+    //   },
+    // },
   };
   </script>
