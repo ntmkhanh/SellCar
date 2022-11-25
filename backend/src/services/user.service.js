@@ -9,7 +9,7 @@ class UserService {
         const userProperties = [
             "user_name", "user_email", "user_phone", "user_password", "user_birth", "user_gender"
         ];
-        //Remove non-contact properties
+        //Remove non-user properties
         Object.keys(user).forEach(function (key) {
             if (userProperties.indexOf(key) == -1) {
                 delete user[key];
