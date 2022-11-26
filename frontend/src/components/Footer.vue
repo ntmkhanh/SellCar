@@ -19,8 +19,6 @@
                 <router-link @click="scrollToTop()" to="/"> <i class="fas fa-arrow-right"></i> Home</router-link>
                 <router-link @click="scrollToTop()" to="/product"> <i class="fas fa-arrow-right"></i> Product</router-link>
                 <router-link @click="scrollToTop()" to="/about"> <i class="fas fa-arrow-right"></i> About</router-link>
-                <!-- <router-link @click="scrollToTop()" to="/register"> <i class="fas fa-arrow-right"></i> Register</router-link>
-                <router-link @click="scrollToTop()" to="/login"> <i class="fas fa-arrow-right"></i> Login</router-link> -->
             </div>
 
             <div class="box">
@@ -36,21 +34,12 @@
             </div> 
 
         </div>
-
-        
-
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
-    // name: 'FooterCom',
-
-    // // computed: {
-    // //     ...mapState(['user'])
-    // // },
-////
+    name: "FooterCom",
     methods: {
         scrollToTop() {
             window.scrollTo(0, 0);
@@ -169,7 +158,7 @@ export default {
 }
 
 .footer .box .bottom .share a:hover {
-    background: #094c2f;
+    background: #19bc2f;
 }
 
 @media (max-width: 576px) {
