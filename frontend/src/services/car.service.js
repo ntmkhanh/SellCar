@@ -14,7 +14,7 @@ class CarService {
     }
 
     async signUp(user) {
-        return (await this.api.post(this.baseUrl, user)).data;
+        return (await this.api.post(`${url}/api/users`, user)).data;
     }
 
     async signIn(user) {
