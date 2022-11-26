@@ -1,5 +1,10 @@
 <template>
-    
+    <div class="car-section">
+        <div class="heading">
+            <span>Product</span>
+            <h3>Our Special Version</h3>
+        </div>
+    </div> 
     <div class="flex justify-center">
     <InputSearch v-model="searchText" />
 </div>
@@ -79,5 +84,17 @@ mounted() {
 </script>
 
 <style scoped>
-
+.heading {
+    text-align: center;
+    padding-bottom: 2rem;
+}
+.heading span {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    color: #27ae60;
+}
+.heading h3 {
+    font-size: 3rem;
+    color: #130f40;
+}
 </style>
