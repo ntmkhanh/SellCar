@@ -8,7 +8,7 @@
 
             <div class="box">
                 <h3>Opening Hours</h3>
-                <p>Everyday : 7:00am to 10:00pm</p>
+                <p>Everyday : 8:00am to 10:00pm</p>
                 <h3>Contact</h3>
                 <p><i class="fas fa-phone"></i> Phone: 0976038762, 0773856988</p>
                 <p><i class="fas fa-map-marker"></i> Address: Can Tho, Viet Nam</p>
