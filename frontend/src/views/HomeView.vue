@@ -8,7 +8,6 @@
           </div>
       </div>
 
-
       <div class="home-category">
           <router-link @click="scrollToTop()" to="/product" class="box">
               <img src="../img/sendan.png" alt="">
@@ -62,7 +61,11 @@ export default {
 </script>
 
 <style scoped>
-
+.home-main .image .home-img:hover  {
+  filter: brightness(120%);
+  filter: contrast(120%);
+  filter: drop-shadow(10px 10px 10px rgb(34, 36, 34));
+}
 .home-about .image img {
   width: 100%;
 }

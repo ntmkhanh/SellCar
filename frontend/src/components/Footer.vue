@@ -2,11 +2,6 @@
     <div class="footer">
         <div class="news-letter">
             <h3>Receive event notifications</h3>
-            <form onsubmit="event.preventDefault();">
-                <input type="email" name="useremailreceiveinfo" placeholder="enter your email"
-                    id="useremailreceiveinfo">
-                <input type="submit" value="subscribe">
-            </form>
         </div>
 
         <div class="box-container">
@@ -14,6 +9,9 @@
             <div class="box">
                 <h3>Opening Hours</h3>
                 <p>Everyday : 7:00am to 10:00pm</p>
+                <h3>Contact</h3>
+                <p><i class="fas fa-phone"></i> Phone: 0976038762, 0773856988</p>
+                <p><i class="fas fa-map-marker"></i> Address: Can Tho, Viet Nam</p>
             </div>
 
             <div class="box">
@@ -21,38 +19,25 @@
                 <router-link @click="scrollToTop()" to="/"> <i class="fas fa-arrow-right"></i> Home</router-link>
                 <router-link @click="scrollToTop()" to="/product"> <i class="fas fa-arrow-right"></i> Product</router-link>
                 <router-link @click="scrollToTop()" to="/about"> <i class="fas fa-arrow-right"></i> About</router-link>
-                <router-link @click="scrollToTop()" to="/register"> <i class="fas fa-arrow-right"></i> Register</router-link>
-                <router-link @click="scrollToTop()" to="/login"> <i class="fas fa-arrow-right"></i> Login</router-link>
+                <!-- <router-link @click="scrollToTop()" to="/register"> <i class="fas fa-arrow-right"></i> Register</router-link>
+                <router-link @click="scrollToTop()" to="/login"> <i class="fas fa-arrow-right"></i> Login</router-link> -->
             </div>
 
             <div class="box">
-                <h3>Extra Links</h3>
-                <div v-if="user">
-                    <router-link @click="scrollToTop()" to="/book"> <i class="fas fa-arrow-right"></i> my order
-                    </router-link>
-                    <router-link @click="scrollToTop()" to="/myorder"> <i class="fas fa-arrow-right"></i> my orders
-                    </router-link>
-                </div>
-                <div v-else>
-                    <router-link @click="scrollToTop()" to="/login"> <i class="fas fa-arrow-right"></i> login
-                    </router-link>
-                    <router-link @click="scrollToTop()" to="/register"> <i class="fas fa-arrow-right"></i> register
-                    </router-link>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="bottom">
-
+                <div class="bottom">
             <div class="share">
-                <a href="https://www.facebook.com/" class="fab fa-facebook-f"></a>
+                <a href="https://www.facebook.com/" class="fab fa-facebook-f" ></a>
                 <a href="https://twitter.com/?lang=en" class="fab fa-twitter"></a>
                 <a href="https://www.instagram.com/" class="fab fa-instagram"></a>
-                <a href="https://www.pinterest.com/" class="fab fa-pinterest"></a>
+                <a href="https://github.com/" class="fab fa-github"></a>
             </div>
 
+                </div>
+            </div> 
+
         </div>
+
+        
 
     </div>
 </template>
@@ -60,11 +45,11 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-    name: 'FooterCom',
+    // name: 'FooterCom',
 
-    computed: {
-        ...mapState(['users'])
-    },
+    // // computed: {
+    // //     ...mapState(['user'])
+    // // },
 ////
     methods: {
         scrollToTop() {
@@ -127,24 +112,24 @@ export default {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     gap: 1.5rem;
-    margin-left: 10%;
+    margin-left: 15%;
 }
 
 .footer .box-container .box h3 {
-    font-size: 2.2rem;
+    font-size: 1.5rem;
     color: #130f40;
     padding: 1rem 0;
 }
 
 .footer .box-container .box p {
-    font-size: 1.4rem;
+    font-size: 1rem;
     color: #666;
     padding: 1rem 0;
 }
 
 .footer .box-container .box a {
     display: block;
-    font-size: 1.4rem;
+    font-size: 1rem;
     color: #666;
     padding: 1rem 0;
 }
@@ -162,28 +147,29 @@ export default {
     color: #27ae60;
 }
 
-.footer .bottom {
+.footer .box .bottom {
     padding-top: 1rem;
     text-align: center;
 }
 
-.footer .bottom .share {
+.footer .box .bottom .share {
     margin: 1.5rem 0;
 }
 
-.footer .bottom .share a {
-    height: 4.5rem;
-    width: 4.5rem;
-    line-height: 4.5rem;
-    font-size: 2rem;
-    border-radius: .5rem;
-    margin: 0 .3rem;
+.footer .box .bottom .share a {
+    height: 2.5rem;
+    width: 2.5rem;
+    line-height: 2.5rem;
+    font-size: 1.5rem;
+    border-radius: 3rem;
+    margin: 1rem 2rem;  
     color: #fff;
-    background: #27ae60;
+    background: #08021e;
+    padding-top: 3px;
 }
 
-.footer .bottom .share a:hover {
-    background: #130f40;
+.footer .box .bottom .share a:hover {
+    background: #094c2f;
 }
 
 @media (max-width: 576px) {
