@@ -32,7 +32,7 @@ POST http://localhost:3000/api/cars HTTP/1.1
 content-type: application/json
 
 {
-    "car_id": 1,
+    "car_id": 2,
     "car_name": "A-Class",
     "car_price": "2.429.000.000",
     "car_discount": "0",

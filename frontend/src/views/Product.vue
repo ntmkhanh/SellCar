@@ -1,5 +1,4 @@
 <template>
-    
     <div class="flex justify-center">
         <AppProduct v-if="filteredCarsCount > 0" :cars="filteredCars" />
         <p v-else>
@@ -84,5 +83,8 @@ export default {
 </script>
 
 <style scoped>
-
+.car-section .box-container .box .content h3 {
+    font-size: 2rem;
+    color: #130f40;
+}
 </style>
