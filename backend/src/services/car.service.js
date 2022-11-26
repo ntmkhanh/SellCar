@@ -6,7 +6,7 @@ class CarService{
     }
     #getCar(payload){
         const car = { ...payload};
-        const carProperties = ["car_id", "car_name", "car_price", "car_discount", "car_desc", "car_status", "car_type", "car_category", "car_src"];
+        const carProperties = ["car_id", "car_name", "car_price", "car_type", "car_src"];
     //Remove non-car properties
     Object.keys(car).forEach(function(key) {
         if (carProperties.indexOf(key) == -1){

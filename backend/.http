@@ -32,15 +32,11 @@ POST http://localhost:3000/api/cars HTTP/1.1
 content-type: application/json
 
 {
-    "car_id": 2,
-    "car_name": "A-Class",
-    "car_price": "2.429.000.000",
-    "car_discount": "0",
-    "car_desc": "",
-    "car_status": "best seller",
-    "car_type": "Sedans",
-    "car_category": "Sedans",
-    "car_src": "./src/img/aclass.png"
+    "car_id": 18,
+    "car_name": "V-Class",
+    "car_price": "2.828.000.000",
+    "car_type": "MPV",
+    "car_src": "./src/img/vclass.png"
 }
 
 ###
