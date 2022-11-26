@@ -19,7 +19,7 @@
           <ErrorMessage name="email" class="text-sm text-red-800" />
         </div>
         <div class="flex flex-col mt-4">
-          <label class="block text-sm font-medium text-gray-700"> Password </label>
+          <label class="block text-sm font-medium text-gray-700"> Password: </label>
           <Field name="password" 
                 class="
                 mt-1
