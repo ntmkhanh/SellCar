@@ -65,7 +65,7 @@ export default {
     computed: {
         ...mapState(['users'])
     },
-
+////
     methods: {
         scrollToTop() {
             window.scrollTo(0, 0);
