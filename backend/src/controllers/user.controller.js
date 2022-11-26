@@ -1,31 +1,13 @@
 const UserService = require('../services/user.service');
 const ApiError = require('../api-error');
 
-exports.signUp = (req, res) => {
+/*exports.signUp = (req, res) => {
     return res.send({ message: 'signUp user handler' });
-};
+};*/
 exports.signIn = (req, res) => {
     return res.send({ message: 'signIn user handler' });
 };
 
-exports.signUp = async(req, res, next) => {
-    if (!req.body?.email) {
-        return next(new ApiError(400, 'Username can not be empty'));
-    }
-    if (!req.body?.user_password) {
-        return next(new ApiError(400, 'Password can not be empty'));
-    }
-    try {
-        const userService = new UserService();
-        const user = await userService.signUp(req.body);
-        return res.send(user);
-    } catch (error) {
-        console.log(error);
-        return next(
-            new ApiError(500, ' An error occured while creating the user')
-        );
-    }
-};
 exports.signIn = async(req, res, next) => {
     if (!req.body?.email) {
         return next(new ApiError(400, 'Email can not be empty'));

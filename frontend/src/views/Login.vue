@@ -1,7 +1,7 @@
 <template>
     <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
       <h1 class="text-2xl font-bold text-gray-800 text-center">Sign In</h1>
-      <Form :validation-schema="formSchema" @submit.prevent="login">
+      <Form :validation-schema="formSchema" @submit="login">
         <div>
           <label class="block text-sm font-medium text-gray-700"> Email </label>
           <Field name="email" 
@@ -71,6 +71,7 @@
                       password: this.password,
                   });
                   console.log("user", user);
+                  this.$router.push("/");
               } catch (error) {
                   console.log(error);
               }

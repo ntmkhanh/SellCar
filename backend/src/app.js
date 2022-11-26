@@ -28,9 +28,6 @@ app.route('/api/users')
     .post(userController.createAccount)
     .get(userController.findAll)
 
-app.route('/api/users')
-    .post(userController.signUp)
-
 app.route('/api/userLogin')
     .post(userController.signIn);
 
