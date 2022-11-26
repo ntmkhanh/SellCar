@@ -24,6 +24,9 @@ class CarService {
     async getAllCar() {
         return (await this.api.get(this.baseUrlCar)).data;
     }
+    async getCar(id) {
+        return (await this.api.get(`${this.baseUrlCar}/${id}`)).data;
+    }
 }
 
 export const carService = new CarService();

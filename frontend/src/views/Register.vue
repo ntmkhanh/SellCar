@@ -75,7 +75,7 @@
               sm:text-sm
               border-gray-300
               rounded-md
-            " placeholder="Birth..." type="text" v-model="birth" />
+            " placeholder="Birth day..." type="text" v-model="birth" />
         <ErrorMessage name="birth" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
