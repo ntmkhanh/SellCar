@@ -1,5 +1,5 @@
-<!-- -->
 <template>
+  
   <div>
       <div class="home-main">
           <div class="content">WELCOME TO SHOWROOM</div>
