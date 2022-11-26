@@ -28,7 +28,7 @@
             <div class="box">
                 <h3>Extra Links</h3>
                 <div v-if="user">
-                    <router-link @click="scrollToTop()" to="/cart"> <i class="fas fa-arrow-right"></i> my order
+                    <router-link @click="scrollToTop()" to="/book"> <i class="fas fa-arrow-right"></i> my order
                     </router-link>
                     <router-link @click="scrollToTop()" to="/myorder"> <i class="fas fa-arrow-right"></i> my orders
                     </router-link>
@@ -60,12 +60,12 @@
 <script>
 import { mapState } from 'vuex'
 export default {
-    // name: 'Footer',
+    name: 'FooterCom',
 
-    // computed: {
-    //     ...mapState(['user'])
-    // },
-
+    computed: {
+        ...mapState(['users'])
+    },
+////
     methods: {
         scrollToTop() {
             window.scrollTo(0, 0);
