@@ -4,7 +4,7 @@
       <div class="home-main">
           <div class="content">WELCOME TO SHOWROOM</div>
           <div class="image">
-              <img @click="scrollReveal()" src="../img/backgr.jpg" alt="" class="home-img">
+              <img src="../img/backgr.jpg" alt="" class="home-img">
           </div>
       </div>
 
@@ -59,7 +59,6 @@ export default {
   }
 };
 
-
 </script>
 
 <style scoped>
@@ -70,7 +69,6 @@ export default {
 
 .home-main,
 .home-about,
-.home-banner,
 .home-category {
   padding: 2rem 10%;
 }
@@ -137,98 +135,13 @@ export default {
   font-size: 1.8rem;
   color: #130f40;
 }
-
-
-/* home banner */
-.home-banner .row-banner {
-  background: url(../assets/images/row-banner.png) no-repeat;
-  height: 45rem;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.home-banner .row-banner .content {
-  position: absolute;
-  top: 50%;
-  left: 7%;
-  transform: translateY(-50%);
-}
-
-.home-banner .row-banner .content span {
-  font-family: 'Satisfy', cursive;
-  font-size: 4rem;
-  color: #27ae60;
-  color: #130f40;
-}
-
-.home-banner .row-banner .content h3 {
-  font-size: 6rem;
-  color: red;
-  text-transform: uppercase;
-}
-
-.home-banner .row-banner .content p {
-  font-size: 2rem;
-  padding-bottom: 1rem;
-}
-
-
-.home-banner .grid-banner .grid {
-  border-radius: 1rem;
-  overflow: hidden;
-  height: 45rem;
-}
-
-.home-banner .grid-banner .grid:hover img {
-  transform: scale(1.2);
-}
-
-.home-banner .grid-banner .grid img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-.home-banner .grid-banner .grid .content {
-  position: absolute;
-  top: 2rem;
-  padding: 0 2rem;
-}
-
-.home-banner .grid-banner .grid .content.center {
-  text-align: center;
-  width: 100%;
-}
-
-.home-banner .grid-banner .grid .content.center span {
-  color: #666;
-}
-
-.home-banner .grid-banner .grid .content.center h3 {
-  color: #130f40;
-}
-
-.home-banner .grid-banner .grid .content span {
-  font-size: 2.5rem;
-  color: #fff;
-}
-
-.home-banner .grid-banner .grid .content h3 {
-  font-size: 3rem;
-  color: #fff;
-  padding-top: .5rem;
-}
-
 .home-about {
-  
+  display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 2rem;
   background: #f7f7f7;
 }
-
-
 
 .home-about .content {
 
@@ -254,40 +167,9 @@ export default {
   color: #666;
 }
 
-.home-about .content .icons-container {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.home-about .content .icons-container .icons {
-  flex: 1 1 20rem;
-  border-radius: .5rem;
-  background: #fff;
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-}
-
-.home-about .content .icons-container .icons h3 {
-  font-size: 1.7rem;
-  color: #130f40;
-}
-
 @media (max-width: 768px) {
   #menu-btn {
       display: inline-block;
-  }
-
-  .home-banner .grid-banner .content h3 {
-      font-size: 15px !important;
-  }
-
-  .home-banner .grid-banner .content.center {
-      padding-left: 0px !important;
   }
 
 }
@@ -297,9 +179,6 @@ export default {
       font-size: 3rem;
   }
 
-  .home-main .content p {
-      font-size: 1.5rem;
-  }
 }
 </style>
 
