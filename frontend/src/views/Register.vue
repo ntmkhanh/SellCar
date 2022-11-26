@@ -2,10 +2,11 @@
 <template>
   <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
     <h1 class="text-2xl font-bold text-gray-800 text-center">Sign Up</h1>
-    <form class="flex flex-col justify-center mt-8" @submit.prevent="signup">
+    <Form :validation-schema="formSchema" @submit="register">
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Name </label>
-        <input class="
+        <Field name="name"
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -15,10 +16,12 @@
               border-gray-300
               rounded-md
             " placeholder="Name..." type="text" v-model="name" />
+          <ErrorMessage name="name" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Email </label>
-        <input class="
+        <Field name="email"
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -28,10 +31,12 @@
               border-gray-300
               rounded-md
             " placeholder="Email..." type="text" v-model="email" />
+          <ErrorMessage name="email" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Phone </label>
-        <input class="
+        <Field name="phone" 
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -41,10 +46,12 @@
               border-gray-300
               rounded-md
             " placeholder="Phone..." type="text" v-model="phone" />
+        <ErrorMessage name="phone" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Password </label>
-        <input class="
+        <Field name="password" 
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -54,10 +61,12 @@
               border-gray-300
               rounded-md
             " placeholder="Pass..." type="password" v-model="password" />
+        <ErrorMessage name="password" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Birth </label>
-        <input class="
+        <Field name="birth" 
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -67,10 +76,12 @@
               border-gray-300
               rounded-md
             " placeholder="Birth..." type="text" v-model="birth" />
+        <ErrorMessage name="birth" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
         <label class="block text-sm font-medium text-gray-700"> Gender </label>
-        <input class="
+        <Field name="gender"
+              class="
               mt-1
               focus:ring-indigo-500 focus:border-indigo-500
               block
@@ -80,18 +91,22 @@
               border-gray-300
               rounded-md
             " placeholder="Gender..." type="text" v-model="gender" />
+        <ErrorMessage name="gender" class="text-sm text-red-800" />
       </div>
       <!-- eslint-disable -->
       <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
-        Sign Up
+        Register
       </button>
-    </form>
+      <p>{{message}}</p>
+    </Form>
     <div v-if="error" class="text-red-600">{{ error.message }}</div>
   </div>
+  
 </template>
 
 <script>
- import * as yup from 'yup';
+import * as yup from 'yup';
+import { Form, Field, ErrorMessage } from 'vee-validate';
 import { carService } from '@/services/car.service';
 export default {
   data() {
@@ -128,6 +143,7 @@ export default {
       birth: "",
       gender:"",
       error: "",
+      formSchema
     };
   },
 
@@ -140,7 +156,7 @@ export default {
                   user_phone: this.phone,
                   user_password: this.password,
                   user_birth: this.birth,
-                  user_gender: this.password
+                  user_gender: this.gender
                 });
                 this.message = 'Tài khoản được tạo thành công.';
             } catch (error) {
@@ -148,5 +164,6 @@ export default {
             }
         },
   },
+  components: { Form, Field, ErrorMessage }
 };
 </script>
