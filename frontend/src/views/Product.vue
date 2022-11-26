@@ -1,9 +1,11 @@
 <template>
-    
+        <div class="flex justify-center">
+        <InputSearch v-model="searchText" />
+    </div>
     <div class="flex justify-center">
         <AppProduct v-if="filteredCarsCount > 0" :cars="filteredCars" />
         <p v-else>
-            
+            Not found
         </p>
     </div>
 
@@ -13,9 +15,11 @@
 
 import AppProduct from "@/components/AppProduct.vue";
 import { carService } from "@/services/car.service";
+import InputSearch from "@/components/InputSearch.vue";
 export default {
-    
+
     components: {
+        InputSearch,
         AppProduct,
     },
     //The full code will be presented below
@@ -74,5 +78,7 @@ export default {
 </script>
 
 <style scoped>
-
+.flex{
+    border-radius: 15px;
+}
 </style>

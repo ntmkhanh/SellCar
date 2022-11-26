@@ -1,8 +1,16 @@
 <script> 
   import AppHeader from '@/components/AppHeader.vue';
   import Footer from '@/components/Footer.vue';
+  import { useAuthStore} from '@/store/auth';
+  //import { mapActions, mapState } from 'pinia';
   //import AppNavar from './components/AppNavar.vue';
   export default {
+    setup(){
+      const store = useAuthStore();
+    return{
+      store,
+    };
+    },
     components: {
     AppHeader,
     Footer,
