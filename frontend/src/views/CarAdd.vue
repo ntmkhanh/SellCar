@@ -9,7 +9,7 @@
                 name="name" 
                 type="text" 
                 class="form-control" 
-                v-model="contactLocal.name" 
+                v-model="name" 
             />
             <ErrorMessage name="name" class="error-feedback" /> 
         </div> 
@@ -19,7 +19,7 @@
                 name="price" 
                 type="text" 
                 class="form-control"
-                v-model="contactLocal.price" 
+                v-model="price" 
             />
             <ErrorMessage name="price" class="error-feedback" /> 
         </div> 
@@ -59,7 +59,7 @@
                 name="type" 
                 type="text" 
                 class="form-control" 
-                v-model="contactLocal.type" 
+                v-model="type" 
             />
             <ErrorMessage name="type" class="error-feedback" /> 
         </div> 
