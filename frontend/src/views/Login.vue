@@ -34,10 +34,10 @@
             <ErrorMessage name="password" class="text-sm text-red-800" />
             </div>
         <!-- eslint-disable -->
-        <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
+        <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4" type="submit">
           Sign In
         </button>
-      </form>
+      </Form>
       <div class="text-red-600 text-sm">{{ error.message }}</div>
     </div>
   </template>
