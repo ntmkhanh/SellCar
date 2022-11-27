@@ -2,9 +2,10 @@
 
   <div>
     <div class="home-main">
-      <div class="content">WELCOME TO SHOWROOM</div>
+      <div class="content">WELCOME TO 
+        <span>SHOWROOM</span></div>
       <div class="image">
-        <img src="../img/backgr.jpg" alt="" class="home-img">
+        <img src="../img/bagr.png" alt="" class="home-img">
       </div>
     </div>
 
@@ -83,13 +84,30 @@ export default {
 }
 
 
-.home-main .content {
-  font-size: 50px;
+.home-main .content  {
+  font-size: 60px;
   position: absolute;
   margin-left: 20px;
-  margin-top: 50px;
-  color: coral;
+  margin-top: -80px;
+  color: white;
+  text-shadow: 1px 1px 2px rgb(188, 31, 7), 0 0 25px rgb(202, 40, 15), 0 0 5px rgb(55, 236, 48);
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+@keyframes color { 
+	 0% { color: #25d2dc;  } 
+	 50% { color: rgb(188, 216, 26);  }
+	 100% { color: #3ed81b;  } 
+ } 
+
+.home-main .content span{
+  color: rgb(220, 232, 10);
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  font-family: 'Satisfy', cursive;
+  font-size: 100px;
+  -webkit-animation: color 1000ms infinite;
+	 -moz-animation: color 1000ms infinite; 
+	 -o-animation: color 1000ms infinite; 
+	 animation: color 1000ms infinite;
 }
 
 .home-main .image {
