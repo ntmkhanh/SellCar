@@ -64,6 +64,7 @@ export default {
   filter: drop-shadow(10px 10px 10px rgb(34, 36, 34));
 }
 
+
 .home-about .image img {
   width: 100%;
 }
