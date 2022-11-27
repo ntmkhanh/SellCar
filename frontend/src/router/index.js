@@ -27,7 +27,7 @@ const routes = [{
     {
         path: "/about",
         name: "About",
-        component: () =>
+        component: () =>                    
             import ('@/views/About.vue')
     },
     {
@@ -47,6 +47,18 @@ const routes = [{
         name: 'bookCar',
         component: () =>
             import ('@/views/bookCar.vue')
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: () =>
+            import ('@/admin/Admin.vue')
+    },
+    {
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () =>
+            import ('@/admin/dashboard.vue')
     }
 
 ];

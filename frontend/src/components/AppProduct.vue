@@ -1,10 +1,10 @@
 <script>
-import { imgUrlFor } from '@/utils/utils';
-const serverUrl = import.meta.env.VITE_SERVER_URL;
+//import { imgUrlFor } from '@/utils/utils';
+//const serverUrl = import.meta.env.VITE_SERVER_URL;
 export default {
     data: () => ({
-        serverUrl,
-        imgUrlFor,
+        //serverUrl,
+        //imgUrlFor,
     }),
     props: {
         cars: { type: Array, default: () => [] },
@@ -27,7 +27,7 @@ export default {
             <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
                 <div class="p-7">
                     <div class="flex-shrink-0" v-if="car.car_src">
-                        <img :src="imgUrlFor(serverUrl, car.car_src)" alt="car" class="rounded-md w-[8.5rem] h-[11rem]" />
+                        <img :src="'http://localhost/3000/' + car.car_src" />
                     </div>
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_name }}
@@ -64,7 +64,7 @@ export default {
     /* margin: 4px 2px; */
     transition-duration: 0.4s;
     cursor: pointer;
-    margin-left: 30%;
+    margin-left: 3%;
     border-radius: .5rem;
     
 }
@@ -75,7 +75,7 @@ export default {
 }
 
 .object {
-    text-align: justify;
+    text-align: center;
 }
 
 .list-group {

@@ -36,7 +36,7 @@ content-type: application/json
     "car_name": "V-Class",
     "car_price": "2.828.000.000",
     "car_type": "MPV",
-    "car_src": "./src/img/vclass.png"
+    "car_src": "./img/vclass.png"
 }
 
 ###
