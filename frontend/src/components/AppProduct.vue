@@ -48,6 +48,5 @@ export default {
     grid-template-columns: auto auto auto;
     padding: 2%;
     gap: 50px;
-    font-size: 20;
 }
 </style>
