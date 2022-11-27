@@ -4,7 +4,7 @@
         :validation-schema="formSchema" 
     > 
         <div class="form-group"> 
-            <label for="name">Name Car</label>
+            <label for="name">Name Customers</label>
             <Field
                 name="name" 
                 type="text" 
@@ -14,14 +14,14 @@
             <ErrorMessage name="name" class="error-feedback" /> 
         </div> 
         <div class="form-group"> 
-            <label for="price">Price</label> 
+            <label for="price">Phone</label> 
             <Field
-                name="price" 
+                name="phone" 
                 type="text" 
                 class="form-control"
                 v-model="price" 
             />
-            <ErrorMessage name="price" class="error-feedback" /> 
+            <ErrorMessage name="phone" class="error-feedback" /> 
         </div> 
         <!--<div class="form-group"> 
             <label for="discount">Discount</label> 
@@ -54,14 +54,14 @@
             <ErrorMessage name="status" class="error-feedback" /> 
         </div> -->
         <div class="form-group"> 
-            <label for="type">Type</label>
+            <label for="quantity">Quantity</label>
             <Field
-                name="type" 
+                name="quantity" 
                 type="text" 
                 class="form-control" 
                 v-model="type" 
             />
-            <ErrorMessage name="type" class="error-feedback" /> 
+            <ErrorMessage name="quantity" class="error-feedback" /> 
         </div> 
         <!--<div class="form-group"> 
             <label for="category">Category</label>
@@ -86,7 +86,7 @@
             </button> 
         </div>-->
         <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
-                Add
+                Book
         </button>
     </Form> 
 </template>
