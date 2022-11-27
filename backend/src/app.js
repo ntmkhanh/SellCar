@@ -7,7 +7,8 @@ const bookController = require('../src/controllers/book.controller')
 
 const app = express();
 
-app.use('./img', express.static('img'))
+app.use('/img', express.static('img'));
+
 app.use(cors());
 app.use(express.json());
 

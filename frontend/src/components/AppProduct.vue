@@ -27,7 +27,8 @@ export default {
             <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
                 <div class="p-7">
                     <div class="flex-shrink-0" v-if="car.car_src">
-                        <img :src="'http://localhost/3000/' + car.car_src" />
+                        <img :src="'http://localhost:3000/' + car.car_src" />
+                        
                     </div>
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_name }}
@@ -81,8 +82,8 @@ export default {
 .list-group {
     display: grid;
     grid-template-columns: auto auto auto;
-    padding: 2%;
+    padding: 5%;
     gap: 50px;
-    font-size: 20;
+    /* font-size: 3rem; */
 }
 </style>
