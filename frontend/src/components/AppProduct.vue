@@ -10,7 +10,7 @@ export default {
             this.$emit('update:activeIndex', index);
         },
         imagePath() {
-        return `cars.car_src`
+        return `xcars.car_src`
   }
     },
 };
@@ -48,5 +48,6 @@ export default {
     grid-template-columns: auto auto auto;
     padding: 2%;
     gap: 50px;
+    font-size: 20;
 }
 </style>
