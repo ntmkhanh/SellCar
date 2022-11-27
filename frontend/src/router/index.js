@@ -1,17 +1,17 @@
 import { createWebHistory, createRouter } from 'vue-router';
-import { useAuthStore } from "@/store/auth";
+//import { useAuthStore } from "@/store/auth";
 
 
 //import Home from "@view/Home.vue";
 
 
-function isAuth() {
+/*function isAuth() {
     const authStore = useAuthStore();
     if (authStore.userAuth == null) {
         return { name: "Login" };
     }
     return true;
-}
+}*/
 const routes = [{
         path: "/",
         name: "HomeView",
@@ -36,6 +36,12 @@ const routes = [{
         component: () =>
             import ('@/views/Register.vue'),
     },
+    {
+        path: '/carAdd',
+        name: 'carAdd',
+        component: () =>
+            import ('@/views/CarAdd.vue')
+    }
 
 ];
 

@@ -27,6 +27,11 @@ class CarService {
     async getCar(id) {
         return (await this.api.get(`${this.baseUrlCar}/${id}`)).data;
     }
+    async createCar(car) {
+        return (await this.api.post(`${url}/api/cars`, car)).data;
+
+    }
+
 }
 
 export const carService = new CarService();
