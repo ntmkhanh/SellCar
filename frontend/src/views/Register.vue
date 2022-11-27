@@ -75,7 +75,7 @@
               sm:text-sm
               border-gray-300
               rounded-md
-            " placeholder="Birth day..." type="text" v-model="birth" />
+            " placeholder="Birth day..." type="date" v-model="birth" />
         <ErrorMessage name="birth" class="text-sm text-red-800" />
       </div>
       <div class="flex flex-col mt-2">
@@ -158,7 +158,7 @@ export default {
                   user_birth: this.birth,
                   user_gender: this.gender
                 });
-                this.message = 'Tài khoản được tạo thành công.';
+                this.message = 'Create succesfull!.';
             } catch (error) {
                 console.log(error);
             }
