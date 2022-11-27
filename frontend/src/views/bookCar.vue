@@ -3,7 +3,7 @@
         @submit="submitCar" 
         :validation-schema="formSchema" 
     > 
-        <div class="form-group"> 
+        <div class="form-group">
             <label for="name">Name Customers</label>
             <Field
                 name="name" 

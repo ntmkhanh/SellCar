@@ -114,6 +114,9 @@ export default {
     margin-bottom: 1rem;
     margin-top: 1rem;
     width: 100%;
+    color: rgb(241, 239, 239);
+    background-color: #130f40;
+    
 }
 
 .admin-container .admin-form-container form p {
@@ -127,7 +130,7 @@ export default {
     color: #27ae60;
 }
 
-.admin-container .admin-form-container form p a:hover {
+.admin-container .admin-form-container form p a:h                over {
     color: #130f40;
     text-decoration: underline;
 }

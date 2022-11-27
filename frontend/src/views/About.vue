@@ -62,11 +62,12 @@ export default {
     color: #130f40;
     margin-bottom: 1%;
 }
-.about-section .about-content p{
+/* .about-section p{
     padding: 2rem 10%;
     text-align: justify;
     font-family: 'Times New Roman', Times, serif;
-}
+    font-size: 30px;
+} */
 
 .about-section .about-content {
     display: flex;
@@ -81,8 +82,11 @@ export default {
 }
 
 .about-section .about-content .about-content-text {
-    font-size: 16px;
-    padding-left: 50px;
+    font-size: 20px;
+    padding: 2rem;
+    text-align: justify;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
 }
 
 .about-section .about-article {
