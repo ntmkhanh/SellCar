@@ -47,8 +47,19 @@ const routes = [{
         name: 'carAdd',
         component: () =>
             import ('@/views/CarAdd.vue')
-    }
-
+    },
+    {
+        path: '/admin',
+        name: 'Admin',
+        component: () =>
+            import ('@/admin/Admin.vue')
+    },
+    {
+        path: "/admin/dashboard",
+        name: "Dashboard",
+        component: () =>
+            import('@/admin/Dashboard.vue')
+      },
 ];
 
 const router = createRouter({
