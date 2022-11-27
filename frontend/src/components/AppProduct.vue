@@ -15,9 +15,6 @@ export default {
         updateActiveIndex(index) {
             this.$emit('update:activeIndex', index);
         },
-        imagePath() {
-        return `car.car_src`
-  }
     },
 };
 </script>
@@ -27,7 +24,7 @@ export default {
             <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
                 <div class="p-7">
                     <div class="flex-shrink-0" v-if="car.car_src">
-                        <img :src="imgUrlFor(serverUrl, car.car_src)" alt="car" class="rounded-md w-[8.5rem] h-[11rem]" />
+                        <img src="imgUrlFor(serverUrl, car.car_src)" alt="car" class="rounded-md w-[8.5rem] h-[11rem]" />
                     </div>
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_name }}

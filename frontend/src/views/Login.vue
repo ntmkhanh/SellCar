@@ -80,8 +80,13 @@
                       email: this.email,
                       password: this.password,
                   });
-                  this.$router.push("/");
-                  console.log("in login: ", this.userAuth.data.user_id);
+                  if(this.userAuth != null){
+                    this.$router.push("/");
+                    this.$toast.success('Đăng nhập thành công');
+                  } else {
+                    this.$toast.error('Tài khoản hoặc mật khẩu không đúng');
+                  }
+                  console.log("in login: ", this.userAuth);
               } catch (error) {
                   console.log(error);
               }

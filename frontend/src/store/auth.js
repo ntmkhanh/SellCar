@@ -12,23 +12,25 @@ export const useAuthStore = defineStore({
 
     actions: {
         async logout() {
-            this.user = null;
+            this.userAuth = null;
         },
 
         async login({ email, password }) {
             console.log(email, password);
             try {
-                this.userAuth = await axios.post(`${url}/api/userLogin`, {
+                const userid = await axios.post(`${url}/api/userLogin`, {
                     email: email,
                     password: password,
                 });
-                console.log("in auth: ", this.userAuth.data.user_id);
-
-
-                return Promise.resolve(this.userAuth.data);
+                console.log("userid: ", userid);
+                if (userid.data !== "") {
+                    this.userAuth = userid;
+                } else this.userAuth = null;
+                console.log("in auth: ", this.userAuth.data);
+                // return Promise.resolve(res.data);
             } catch (error) {
                 console.log(error);
-                return Promise.reject(error);
+                // return Promise.reject(error);
             }
         },
     },

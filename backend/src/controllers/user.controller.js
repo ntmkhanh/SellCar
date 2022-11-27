@@ -15,6 +15,9 @@ exports.signIn = async(req, res, next) => {
     if (!req.body?.password) {
         return next(new ApiError(400, 'Password can not be empty'));
     }
+    /*if (!req.body?.name) {
+        return next(new ApiError(400, 'Password can not be empty'));
+    }*/
     try {
         const userService = new UserService();
         const user = await userService.signIn(req.body.email, req.body.password);
