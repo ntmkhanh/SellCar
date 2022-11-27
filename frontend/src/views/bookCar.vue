@@ -54,7 +54,7 @@
             <ErrorMessage name="status" class="error-feedback" /> 
         </div> -->
         <div class="form-group"> 
-            <label for="quantity">Quantity</label>
+            <label for="quantity">Quantity:</label>
             <Field
                 name="quantity" 
                 type="text" 
