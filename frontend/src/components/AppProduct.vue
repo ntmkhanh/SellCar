@@ -10,8 +10,8 @@ export default {
             this.$emit('update:activeIndex', index);
         },
         imagePath() {
-        return `car.car_src`
-  }
+            return `car.car_src`
+        }
     },
 };
 </script>
@@ -21,7 +21,8 @@ export default {
             <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
                 <div class="p-7">
                     <p class="text-gray-900 text-base font-medium mb-2">
-                        <img src="@/img/dsds.png"  alt="Logo" />                    </p>
+                        <img src="@/img/dsds.png" alt="Logo" />
+                    </p>
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_name }}
                     </div>
@@ -29,15 +30,15 @@ export default {
                         {{ car.car_price }}
                     </div>
                     <div class="text-gray-900 text-base font-medium mb-2">
-                        {{ car.car_type }} 
+                        {{ car.car_type }}
                     </div>
-                    <router-link to="/bookCar" >
-                    <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
-                        <span class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                        Book
-                    </span>
-        </button>
-    </router-link>
+                    <router-link to="/bookCar">
+                        <button class="button">
+                            <span class="bookbtn">
+                                Book
+                            </span>
+                        </button>
+                    </router-link>
                 </div>
             </div>
         </li>
@@ -45,11 +46,33 @@ export default {
 </template>
 
 <style>
+.button {
+    background-color: white; /* Green */
+    border: 2px solid #008CBA;
+    color: black; 
+    padding: 8px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    /* margin: 4px 2px; */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-left: 30%;
+    border-radius: .5rem;
+    
+}
+
+.button:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
 .object {
     text-align: justify;
 }
 
-.list-group{
+.list-group {
     display: grid;
     grid-template-columns: auto auto auto;
     padding: 2%;

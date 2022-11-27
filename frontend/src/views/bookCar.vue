@@ -4,7 +4,7 @@
         :validation-schema="formSchema" 
     > 
         <div class="form-group"> 
-            <label for="name">Name Car</label>
+            <label for="name">Name Customers</label>
             <Field
                 name="name" 
                 type="text" 

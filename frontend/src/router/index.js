@@ -46,7 +46,7 @@ const routes = [{
         path: '/bookCar',
         name: 'bookCar',
         component: () =>
-            import ('@/views/CarAdd.vue')
+            import ('@/views/bookCar.vue')
     }
 
 ];
