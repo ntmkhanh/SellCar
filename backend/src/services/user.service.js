@@ -6,7 +6,7 @@ class UserService {
     }#getUser(payload) {
             const user = {...payload };
             const userProperties = [
-                "user_name", "user_email", "user_phone", "user_password", "user_birth", "user_gender"
+                "user_id", "user_name", "user_email", "user_phone", "user_password", "user_birth", "user_gender"
             ];
             //Remove non-user properties
             Object.keys(user).forEach(function(key) {

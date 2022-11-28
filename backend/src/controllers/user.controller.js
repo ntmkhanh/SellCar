@@ -25,7 +25,7 @@ exports.signIn = async(req, res, next) => {
     } catch (error) {
         console.log(error);
         return next(
-            new ApiError(500, ' An error occured while login the user')
+            new ApiError(500, ' An error occured while login the User')
         );
     }
 };
@@ -41,7 +41,7 @@ exports.createAccount = async(req, res, next) => {
     } catch (error) {
         console.log(error);
         return next(
-            new ApiError(500, 'An error occurred while creating the contact')
+            new ApiError(500, 'An error occurred while creating the User')
         );
     }
 };
@@ -60,28 +60,28 @@ exports.findAll = async(req, res, next) => {
     } catch (error) {
         console.log(error)
         return next(
-            new ApiError(500, 'An error occurred while retrieving contacts')
+            new ApiError(500, 'An error occurred while retrieving User')
         )
     }
 
     return res.send(users)
 };
 //find a singla contact with an id
-exports.findOne = async(req, res, next) => {
-    try {
-        const userService = new UserService()
-        const user = await userService.findById(req.params.id)
-        if (!user) {
-            return next(new ApiError(404, 'Contact not found'))
-        }
-        return res.send(user)
-    } catch (error) {
-        console.log(error)
-        return next(
-            new ApiError(
-                500,
-                `Error retrieving contact with id=${req.params.id}`
-            )
-        );
-    }
-};
+// exports.findOne = async(req, res, next) => {
+//     try {
+//         const userService = new UserService()
+//         const user = await userService.findById(req.params.id)
+//         if (!user) {
+//             return next(new ApiError(404, 'Contact not found'))
+//         }
+//         return res.send(user)
+//     } catch (error) {
+//         console.log(error)
+//         return next(
+//             new ApiError(
+//                 500,
+//                 `Error retrieving contact with id=${req.params.id}`
+//             )
+//         );
+//     }
+// };

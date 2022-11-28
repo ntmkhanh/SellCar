@@ -1,188 +1,116 @@
 <template>
-    <div class="admin-container">
-        <div class="d-flex justify-content-between">
-            <h1>Hello Admin!</h1>
-            <button class="btn" @click="handleLogout()">Logout</button>
+    <div class="car-section">
+        <div class="heading">
+            <span>Product</span>
         </div>
 
-        <!-- <div class="table-responsive">
-             PROJECT TABLE -->
-            <!-- <table class="table colored-header datatable project-list">
-                <thead>
-                    <tr>
-                        <th>Bill Id</th>
-                        <th>User Id</th>
-                        <th>Phone</th>
-                        <th>Address</th>
-                        <th>When</th>
-                        <th>Paid</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="(b) in filterBills.slice().reverse()" :key="b.bill_id">
-                        <td>{{ b.bill_id }}</td>
-                        <td>{{ b.user_id }}</td>
-                        <td>{{ b.bill_phone }}</td>
-                        <td>{{ b.bill_address }}</td>
-                        <td>{{ b.bill_when }}</td>
-                        <td>{{ b.bill_paid }}</td>
-                        <td>${{ b.bill_total }}</td>
-                        <td>{{ avaiableStatus[b.bill_status] }}</td>
-                        <td>
-                            <button v-if="b.bill_status < 5" class="action-btn" @click="nextStatusBtn(b.bill_id)">
-                                {{ avaiableStatus[b.bill_status + 1] }}
-                            </button>
+        <div class="flex justify-center">
+            <InputSearch v-model="searchText" />
+        </div>
+    </div>
 
-                            <button v-if="b.bill_status == 1" class="cancel-btn" @click="cancelBtn(b.bill_id)">
-                                Cancel
-                            </button>
-
-                            <button v-else-if="b.bill_status == 5 && b.bill_paid == 'false'" class="paid-btn"
-                                @click="paidBtn(b.bill_id)">
-                                Paid
-                            </button>
-
-                            <button v-else-if="b.bill_status == 5 && b.bill_paid == 'true'" class="action-btn"
-                                @click="nextStatusBtn(b.bill_id)">
-                                {{ avaiableStatus[b.bill_status + 1] }}
-                            </button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> --> -->
+    <div class="list-gr justify-center">
+            <AppProduct v-if="filteredCarsCount > 0" :cars="filteredCars" />
+        <p v-else>
+            Not found!
+        </p>
     </div>
 </template>
 
-
 <script>
-import axios from "axios";
-import { mapState, mapMutations } from "vuex";
-export default {
-    name: 'Dashboard',
 
+import AppProduct from "@/components/AppProduct.vue";
+import { carService } from "@/services/car.service";
+import InputSearch from "@/components/InputSearch.vue";
+export default {
+
+    components: {
+        InputSearch,
+        AppProduct,
+    },
+    //The full code will be presented below
     data() {
         return {
-            avaiableStatus: ["cancel", "confirmed", "preparing", "checking", "delivering", "delivered", "completed"],
-            allBills: [],
-            showOrderDetails: false,
-            sendId: undefined,
-            interval: "",
-        }
+            cars: [],
+            searchText: '',
+        };
     },
-
-    // created() {
-    //     this.getAllBills();
-    //     if (!this.admin) {
-    //         this.$router.push("/");
-    //     }
-    // },
-
-    // mounted: function () {
-    //     this.autoUpdate();
-    // },
-
-    // beforeUnmount() {
-    //     clearInterval(this.interval)
-    // },
-
-    // computed: {
-    //     ...mapState(["allFoods", "admin"]),
-
-    //     filterBills: function () {
-    //         return this.allBills.filter((b) => b.bill_status < 6 && b.bill_status > 0);
-    //     },
-    // },
-
-    // methods: {
-    //     ...mapMutations(["setAdmin"]),
-
-    //     async getAllBills() {
-    //         this.allBills = (await axios.get('/billstatus')).data;
-    //     },
-
-    //     sendBillId: function (id) {
-    //         this.sendId = id
-    //         this.showOrderDetails = !this.showOrderDetails;
-    //     },
-
-    //     closeView: function () {
-    //         this.showOrderDetails = !this.showOrderDetails;
-    //     },
-
-        handleLogout: function () {
-            this.setAdmin("");
+    watch: {
+        // Monitor changes on searchText
+        // Release the currently selected post
+    },
+    computed: {
+        // Map posts to strings for searching.
+        carsAsStrings() {
+            return this.cars.map((car) => {
+                const { car_name } = car;
+                return [car_name.toLowerCase()].join('');
+            });
+        },
+        // Return posts filtered by the search box.
+        filteredCars() {
+            if (!this.searchText) return this.cars;
+            return this.cars.filter((car, index) =>
+                this.carsAsStrings[index].includes(this.searchText.toLowerCase())
+            );
         },
 
-        // async nextStatusBtn(id) {
-        //     await axios.put('/billstatus/' + id);
-        //     this.getAllBills();
-        // },
-
-        // async paidBtn(id) {
-        //     await axios.put('/billstatus/paid/' + id);
-        //     this.getAllBills();
-        // },
-
-        // async cancelBtn(id) {
-        //     await axios.put('/billstatus/cancel/' + id);
-        //     this.getAllBills();
-        // },
-
-        // autoUpdate: function () {
-        //     this.interval = setInterval(function () {
-        //         this.getAllBills();
-        //     }.bind(this), 1000);
-        // }
-
-    //},
-}
+        filteredCarsCount() {
+            return this.filteredCars.length;
+        },
+    },
+    methods: {
+        async retrieveCars() {
+            try {
+                /*
+                const postsList = await blogService.getManyPost();
+                this.posts = postsList.sort((current, next) =>
+                    current.post_title.localeCompare(next.post_title)
+                );
+                */
+                this.cars = await carService.getAllCar();
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        refreshList() {
+            this.retrieveCars();
+        },
+    },
+    mounted() {
+        this.refreshList();
+    },
+};
 </script>
 
 <style scoped>
-.admin-container {
-    background-color: #fff;
-    height: 100vh;
-    padding: 2rem 9%;
-    font-size: 16px;
+.heading {
+    text-align: center;
+    padding-bottom: 2rem;
 }
 
-.project-list>tbody>tr>td {
-    padding: 12px 8px;
+.heading span {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    color: #27ae60;
 }
 
-.project-list>tbody>tr>td .avatar {
-    width: 22px;
-    border: 1px solid #CCC;
+.heading h3 {
+    font-size: 3rem;
+    color: #130f40;
 }
 
-.table-responsive {
-    margin-top: 8vh;
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 }
-
-.action-btn,
-.cancel-btn,
-.paid-btn {
-    width: 100px;
-    height: 25px;
-    color: white;
-    text-transform: capitalize;
-}
-
-.action-btn {
-    background-color: #0da9ef;
-    margin-right: 10px;
-}
-
-.cancel-btn,
-.paid-btn {
-    background-color: red;
-}
-
-.action-btn:hover {
-    background-color: #27ae60;
+.list-gr {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    padding: 10px;
 }
 </style>

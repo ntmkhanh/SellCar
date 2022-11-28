@@ -1,157 +1,98 @@
+<!-- eslint-disable vue/multi-word-component-names -->
 <template>
-    <div class="admin-container">
-        <div class="admin-form-container">
-            <form id="adminForm" @submit="handleSubmit" novalidate autocomplete="off">
-                <h3>ADMIN</h3>
-
-                <div v-if="errors.length" class="error-box">
-                    <ul>
-                        <li v-for="error in errors" :key="error">{{ error }}</li>
-                    </ul>
-                </div>
-
-                <div class="form-group">
-                    <input type="password" id="uPass" name="uPass" class="form-control"
-                        placeholder="enter admin password" v-model="adminObj.pass" />
-                </div>
-
-                <div class="form-group">
-                    <input type="submit" value="admin access" class="btn">
-                </div>
-            </form>
+    <div class="w-4/12 mx-auto p-16 border mt-12 shadow-md">
+      <h1 class="text-2xl font-bold text-gray-800 text-center">Sign In for Admin</h1>
+      <Form :validation-schema="formSchema" @submit="login">
+        <div>
+          <label class="block text-sm font-medium text-gray-700"> Email </label>
+          <Field name="email" 
+                class="
+                mt-1
+                focus:ring-indigo-500 focus:border-indigo-500
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              " placeholder="Email..." type="email" v-model="email" />
+          <ErrorMessage name="email" class="text-sm text-red-800" />
         </div>
+        <div class="flex flex-col mt-4">
+          <label class="block text-sm font-medium text-gray-700"> Password: </label>
+          <Field name="password" 
+                class="
+                mt-1
+                focus:ring-indigo-500 focus:border-indigo-500
+                block
+                w-full
+                shadow-sm
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              " placeholder="Password" type="password" v-model="password" />
+            <ErrorMessage name="password" class="text-sm text-red-800" />
+            </div>
+        <!-- eslint-disable -->
+        <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4" type="submit">
+          Sign In
+        </button>
+      </Form>
+      <div class="text-red-600 text-sm">{{ error.message }}</div>
     </div>
-</template>
-
-
-<script>
-import { mapMutations } from "vuex";
-export default {
-    name: 'Admin',
-
-    data() {
-        return {
-            adminObj: { pass: "" },
-            key: "2conga",
-            errors: [],
-        }
-    },
-
-    methods: {
-        ...mapMutations(["setAdmin"]),
-
-        handleSubmit(e) {
-            this.errors = [];
-            if (!this.adminObj.pass) {
-                this.errors.push('Password is required');
-            }
-
-            if (!this.errors.length == 0) {
-                e.preventDefault();
-            }
-            else {
-                e.preventDefault();
-                if (this.key === this.adminObj.pass) {
-                    this.setAdmin("admin");
-                    this.$router.push("/admin/dashboard");
-                }
-                else {
-                    this.errors.push("Admin password wrong!")
-                }
-
-            }
-        }
-    }
-}
-</script>
-
-<style scoped>
-.admin-container {
-    padding: 2rem 9%;
-}
-
-.admin-container .admin-form-container {
-    background-color: #fff;
-    height: 100vh;
-}
-
-.admin-container .admin-form-container form {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    max-width: 40rem;
-    width: 100%;
-    box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.05);
-    border: 0.1rem solid rgba(0, 0, 0, 0.2);
-    padding: 2rem;
-    border-radius: .5rem;
-    animation: fadeUp .4s linear;
-}
-
-.admin-container .admin-form-container form h3 {
-    padding-bottom: 1rem;
-    font-size: 2rem;
-    font-weight: bolder;
-    text-transform: uppercase;
-    color: #130f40;
-    margin: 0;
-}
-
-.admin-container .admin-form-container form .form-control {
-    margin: .7rem 0;
-    border-radius: .5rem;
-    background: #f7f7f7;
-    padding: 2rem 1.2rem;
-    font-size: 1.6rem;
-    color: #130f40;
-    text-transform: none;
-    width: 100%;
-    border: none;
-}
-
-.admin-container .admin-form-container form .btn {
-    margin-bottom: 1rem;
-    margin-top: 1rem;
-    width: 100%;
-    color: rgb(241, 239, 239);
-    background-color: #130f40;
-    
-}
-
-.admin-container .admin-form-container form p {
-    padding-top: 1rem;
-    font-size: 1.5rem;
-    color: #666;
-    margin: 0;
-}
-
-.admin-container .admin-form-container form p a {
-    color: #27ae60;
-}
-
-.admin-container .admin-form-container form p a:h                over {
-    color: #130f40;
-    text-decoration: underline;
-}
-
-.admin-container .admin-form-container form .error-box {
-    background-color: #fff9fa;
-    box-sizing: border-box;
-    border: 2px solid rgba(255, 66, 79, .2);
-    border-radius: 2px;
-    font-size: 12px;
-    margin-bottom: 20px;
-}
-
-.admin-container .admin-form-container form .error-box ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 10px 0px;
-}
-
-.admin-container .admin-form-container form .error-box ul li {
-    padding-left: 10px;
-    color: rgb(182, 0, 0);
-}
-</style>
+  </template>
+  <script>
+  import * as yup from 'yup';
+  import { Form, Field, ErrorMessage } from 'vee-validate';
+  //import { carService } from '@/services/car.service';
+  import { adminAuthStore } from '@/store/admin';
+  import { mapActions, mapState } from 'pinia';
+  export default {
+      data() {
+          const formSchema = yup.object().shape({
+              email: yup
+                  .string()
+                  .required('Tên tài khoản không thể trống.')
+                  .max(50, 'Tên tài khoản không quá 50 kí tự'),
+              password: yup
+                  .string()
+                  .required('Mật khẩu không thể trống.')
+                  .min(6, 'Mật khẩu ít nhất 6 kí tự.'),
+          });
+          return ({
+              email: "",
+              password: "",
+              error: "",
+              formSchema
+          })
+      },
+      computed: {
+        ...mapState(adminAuthStore, ["adminAuth"]),
+      },
+      mounted() {
+          console.log("in login 1: ", this.adminAuth);
+      },
+      methods: {
+        ...mapActions(adminAuthStore, { loginVue: "login"}),
+          async login() {
+              try {
+                  await this.loginVue({
+                      email: this.email,
+                      password: this.password,
+                  });
+                  if(this.adminAuth != null){
+                    this.$router.push("/dashboard");
+                    this.$toast.success('Đăng nhập thành công');
+                  } else {
+                    this.$toast.error('Tài khoản hoặc mật khẩu không đúng');
+                  }
+                  console.log("in login: ", this.adminAuth);
+              } catch (error) {
+                  console.log(error);
+              }
+          }
+          
+      },
+      components: { Form, Field, ErrorMessage }
+  };
+  </script>

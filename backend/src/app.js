@@ -3,7 +3,8 @@ const cors = require('cors')
 const ApiError = require('./api-error');
 const userController = require('../src/controllers/user.controller');
 const carController = require('../src/controllers/car.controller');
-const bookController = require('../src/controllers/book.controller')
+const bookController = require('../src/controllers/book.controller');
+const adminController = require('../src/controllers/admin.controller');
 
 const app = express();
 
@@ -26,6 +27,11 @@ app.use((err, req, res, next) => {
         message: err.message || 'Internal Server Error',
     });
 });
+app.route('/api/admins')
+    .post(adminController.createAccount)
+
+app.route('/api/adminLogin')
+    .post(adminController.signIn)
 
 app.route('/api/users')
     .post(userController.createAccount)
@@ -34,8 +40,8 @@ app.route('/api/users')
 app.route('/api/userLogin')
     .post(userController.signIn);
 
-app.route('/api/users/:id')
-    .get(userController.findOne)
+// app.route('/api/users/:id')
+//     .get(userController.findOne)
 
 app.route('/api/cars')
     .post(carController.createCar)
