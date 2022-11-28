@@ -7,7 +7,7 @@ exports.createBook = async(req, res, next) => {
     }
     try {
         const bookService = new BookService();
-        const book = await bookService.getIDcar_user(req.body);
+        const book = await bookService.insertBook(req.body);
         return res.send(book);
     } catch (error){
         console.log(error);
@@ -38,9 +38,9 @@ exports.findAll = async (req, res, next) => {
 exports.findOne = async (req, res, next) => {
     try {
         const bookService = new BookService()
-        const book = await bookService.findById(req.params.id)
+        const book = await bookService.findByEmail(req.params.email)
         if (!book) {
-            return next(new ApiError(404, 'Contact not found'))
+            return next(new ApiError(404, 'Book not found'))
         }
         return res.send(book)
     } catch(error) {

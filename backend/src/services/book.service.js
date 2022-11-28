@@ -4,11 +4,12 @@ class BookService {
     constructor() {
         this.books = knex('book');
         this.cars = knex('car');
-        this.users = knex('user')
+        this.users = knex('user');
+        this.admins = knex('admin')
     }#getBook(payload) {
         const book = {...payload };
         const bookProperties = [
-            "book_id", "user_id", "car_id","cus_name","cus_phone","itemcar_quantity"
+            "book_id", "user_email", "car_id","itemcar_quantity", "cus_name","cus_phone",
         ];
         //Remove non-book properties
         Object.keys(book).forEach(function(key) {
@@ -20,15 +21,17 @@ class BookService {
     }
     async insertBook(payload) {
         const book = this.#getBook(payload);
-        const [id] = await this.books.insert(book);
-        return { id, ...book };
+        const [email] = await this.books.insert(book);
+        return { email, ...book };
     }
     async all() {
         return await this.books.select('*');
     }
-    async findById(id) {
-        return await this.books.where('book_id', id).select('*').first();
+
+    async findByEmail(email) {
+        return await this.books.where('user_email', email).select('*');
     }
+
     async delete(id) {
         return await this.books.where('book_id', id).del();
     }

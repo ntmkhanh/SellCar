@@ -41,14 +41,17 @@ content-type: application/json
 
 
 ###
-GET http://localhost:3000/api/books HTTP/1.1
+GET http://localhost:3000/api/books/nghia@gmail.com HTTP/1.1
+
 ###
-POST http://localhost:3000/api/books
+POST http://localhost:3000/api/books HTTP/1.1
 content-type: application/json
 
 {
     "book_id": 1,
-    "user_id": 10,
+    "user_email": "2conga",
     "car_id": 1,
-    "itemcar_quantity": 2
+    "itemcar_quantity": 2,
+    "cus_name": "2conga",
+    "cus_phone": 098745368
 }

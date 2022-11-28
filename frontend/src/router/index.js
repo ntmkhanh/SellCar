@@ -58,7 +58,7 @@ const routes = [{
         path: '/dashboard',
         name: 'Dashboard',
         component: () =>
-            import ('@/admin/dashboard.vue')
+            import ('@/admin/Dashboard.vue')
     },
 
     {
@@ -66,6 +66,12 @@ const routes = [{
         name: 'ShopCart',
         component: () =>
             import ('@/views/ShopCart.vue')
+    },
+    {
+        path: '/addcar',
+        name: 'AddCar',
+        component: () =>
+            import ('@/views/AddCar.vue')
     },
 
 ];

@@ -96,39 +96,3 @@
       components: { Form, Field, ErrorMessage }
   };
   </script>
-<!-- <script>
-  import axios from 'axios'
-  export default {
-    data: () => ({
-      email: "",
-      password: "",
-      error: "",
-    }),
-    methods: {
-      async login() {
-        try {
-          await this.loginVue({
-            email: this.email,
-            password: this.password,
-          });
-          this.$router.push("/");
-        } catch (error) {
-          this.error = error;
-        }
-      },
-      async loginVue({ email, password }) {
-            console.log(email, password);
-            try {
-                // Sign in here
-                const res = await axios.post("/api/authenticate", { email: email, password: password })
-                this.user = res.data["user"]
-
-                return Promise.resolve("Success")
-            } catch (error) {
-                console.log(error);
-                return Promise.reject(error)
-            }
-        },
-    },
-  }; 
-</script> -->
