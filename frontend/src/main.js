@@ -12,9 +12,4 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia)
 app.use(Toaster)
-<<<<<<< HEAD
 app.mount('#app')
-
-=======
-app.mount('#app')
->>>>>>> ca7f9c0caba151915b0d7be3442377035504efe8

@@ -57,7 +57,6 @@ export default {
     text-align: center;
     padding-bottom: 2rem;
 }
-
 .heading span {
     font-family: 'Satisfy', cursive;
     font-size: 3rem;
