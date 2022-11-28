@@ -36,7 +36,7 @@ export default {
                         {{ car.car_type }}
                     </div>
                     <router-link to="/bookCar">
-                        <button class="button">
+                        <button class="button" >
                             <span class="bookbtn">
                                 BOOK
                             </span>

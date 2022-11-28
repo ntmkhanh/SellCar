@@ -86,7 +86,7 @@
             </button> 
         </div>-->
         <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
-                Book
+                Seve Info
         </button>
     </Form> 
 </template>
@@ -109,6 +109,9 @@ export default {
             .required('Not empty.'),
         });
         return {
+            name:"",
+            phone:"",
+            quantity:"",
             formSchema, 
         }; 
     },
@@ -124,7 +127,9 @@ export default {
     methods: {
     async submitCar() {
             try {
-                await carService.createCar({
+                await carService.createbook({
+                  book_id: this.book,
+                  user_id: this.user,
                   car_name: this.name,
                   car_price: this.price,
                   car_type: this.type,

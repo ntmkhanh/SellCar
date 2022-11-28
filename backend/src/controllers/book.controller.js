@@ -7,7 +7,7 @@ exports.createBook = async(req, res, next) => {
     }
     try {
         const bookService = new BookService();
-        const book = await bookService.insertBook(req.body);
+        const book = await bookService.getIDcar_user(req.body);
         return res.send(book);
     } catch (error){
         console.log(error);
@@ -85,3 +85,4 @@ exports.deleteAll = async (req, res, next) => {
         )
     }
 };
+

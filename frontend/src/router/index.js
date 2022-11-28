@@ -19,7 +19,7 @@ const routes = [{
     {
         path: "/about",
         name: "About",
-        component: () =>                    
+        component: () =>
             import ('@/views/About.vue')
     },
     {
@@ -50,7 +50,7 @@ const routes = [{
         path: '/dashboard',
         name: 'Dashboard',
         component: () =>
-            import ('@/admin/Dashboard.vue')
+            import ('@/admin/dashboard.vue')
     }
 
 ];
