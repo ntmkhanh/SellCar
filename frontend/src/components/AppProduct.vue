@@ -24,12 +24,7 @@ export default {
             <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
                 <div class="p-7">
                     <div class="flex-shrink-0" v-if="car.car_src">
-<<<<<<< HEAD
-                        <img src="imgUrlFor(serverUrl, car.car_src)" alt="car" class="rounded-md w-[8.5rem] h-[11rem]" />
-=======
-                        <img :src="'http://localhost:3000/' + car.car_src" />
-                        
->>>>>>> 130383a6ee8ef4e081d89e3aa4c0f735bb0171b5
+                        <img :src="'http://localhost:3000/' +car.car_src" />
                     </div>
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_name }}
@@ -41,7 +36,7 @@ export default {
                         {{ car.car_type }}
                     </div>
                     <router-link to="/bookCar">
-                        <button class="button">
+                        <button class="button" >
                             <span class="bookbtn">
                                 BOOK
                             </span>

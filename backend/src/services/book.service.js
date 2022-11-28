@@ -3,10 +3,12 @@ const knex = require('../database/knex.js')
 class BookService {
     constructor() {
         this.books = knex('book');
+        this.cars = knex('car');
+        this.users = knex('user')
     }#getBook(payload) {
         const book = {...payload };
         const bookProperties = [
-            "book_id", "user_id", "car_id", "itemcar_quantity"
+            "book_id", "user_id", "car_id","cus_name","cus_phone","itemcar_quantity"
         ];
         //Remove non-book properties
         Object.keys(book).forEach(function(key) {
@@ -33,13 +35,11 @@ class BookService {
     async deleteAll() {
         return await this.books.del();
     }
-    async getIDcar(id) {
-        return await this.book
-            .select('car.car_id', 'car_name')
-            .join('car', 'car.car_id', 'posts.user_id')
-            .leftJoin('likes', 'posts.post_id', 'likes.post_id')
-            .count('likes.post_id', { as: 'numLike' }).groupBy('posts.post_id')
-            .where('posts.post_id', id).first();
+    async getIDcar_user(){
+        return await this.books
+        .select('book.book_id','car_id','user_id')
+        .join('car', 'car.car_id' ,'book.book_id')
+        .leftJoin('user', 'user.user_id', 'book.user_id')
     }
 };
 

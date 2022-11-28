@@ -6,6 +6,7 @@ class CarService {
     constructor() {
         this.baseUrl = `${url}/api/users`;
         this.baseUrlCar = `${url}/api/cars`;
+
         this.api = axios.create({
             headers: {
                 'Content-Type': 'application/json',
@@ -13,7 +14,9 @@ class CarService {
             },
         });
     }
-
+    async createbook() {
+        return (await this.api.get(`${url}/api/books`)).data;
+    }
     async signUp(user) {
         return (await this.api.post(`${url}/api/users`, user)).data;
     }

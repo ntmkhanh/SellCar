@@ -27,7 +27,7 @@ const routes = [{
     {
         path: "/about",
         name: "About",
-        component: () =>                    
+        component: () =>
             import ('@/views/About.vue')
     },
     {
@@ -59,7 +59,14 @@ const routes = [{
         name: 'Dashboard',
         component: () =>
             import ('@/admin/dashboard.vue')
-    }
+    },
+
+    {
+        path: '/shopcart',
+        name: 'ShopCart',
+        component: () =>
+            import ('@/views/ShopCart.vue')
+    },
 
 ];
 

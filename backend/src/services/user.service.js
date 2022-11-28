@@ -45,5 +45,8 @@ class UserService {
             .where('user_email', `${email}`)
             .andWhere('user_password', `${password}`).first();
     }
+
+
 }
+
 module.exports = UserService;
