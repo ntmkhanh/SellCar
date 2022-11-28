@@ -9,7 +9,7 @@ class BookService {
     }#getBook(payload) {
         const book = {...payload };
         const bookProperties = [
-            "book_id", "user_email", "car_id","itemcar_quantity", "cus_name","cus_phone",
+            "book_id", "user_email", "car_id", "itemcar_quantity", "cus_name", "cus_phone",
         ];
         //Remove non-book properties
         Object.keys(book).forEach(function(key) {
@@ -19,11 +19,12 @@ class BookService {
         });
         return book;
     }
-    async insertBook(payload) {
-        const book = this.#getBook(payload);
-        const [email] = await this.books.insert(book);
-        return { email, ...book };
+    async insertBook(payload){
+        const car = this.#getBook(payload);
+        const [id] = await this.books.insert(book);
+        return{id, ...book};
     }
+    
     async all() {
         return await this.books.select('*');
     }
@@ -32,12 +33,12 @@ class BookService {
         return await this.books.where('user_email', email).select('*');
     }
 
-    async delete(id) {
-        return await this.books.where('book_id', id).del();
-    }
-    async deleteAll() {
-        return await this.books.del();
-    }
+    // async delete(id) {
+    //     return await this.books.where('book_id', id).del();
+    // }
+    // async deleteAll() {
+    //     return await this.books.del();
+    // }
     async getIDcar_user(){
         return await this.books
         .select('book.book_id','car_id','user_id')

@@ -56,7 +56,6 @@ app.route('/api/cars/:id')
 app.route('/api/books')
     .post(bookController.createBook)
     .get(bookController.findAll)
-    .delete(bookController.deleteAll)
 
 app.route('/api/books/:email')
     .get(bookController.findOne)
