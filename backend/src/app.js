@@ -58,8 +58,11 @@ app.route('/api/books')
     .get(bookController.findAll)
     .delete(bookController.deleteAll)
 
+app.route('/api/cart').get(bookController.seeCartUser)
+
 app.route('/api/books/:id')
     .get(bookController.findOne)
     .delete(bookController.delete)
+
 
 module.exports = app;

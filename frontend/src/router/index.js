@@ -43,10 +43,11 @@ const routes = [{
             import ('@/views/Register.vue'),
     },
     {
-        path: '/bookCar',
+        path: '/bookCar/:carid',
         name: 'bookCar',
         component: () =>
-            import ('@/views/bookCar.vue')
+            import ('@/views/bookCar.vue'),
+        props: (route) => ({ carid: route.params.carid })
     },
     {
         path: '/admin',

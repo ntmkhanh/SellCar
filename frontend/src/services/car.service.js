@@ -14,8 +14,8 @@ class CarService {
             },
         });
     }
-    async createbook() {
-        return (await this.api.get(`${url}/api/books`)).data;
+    async createbook(book) {
+        return (await this.api.post(`${url}/api/books`, book)).data;
     }
     async signUp(user) {
         return (await this.api.post(`${url}/api/users`, user)).data;
