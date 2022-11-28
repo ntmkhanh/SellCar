@@ -86,7 +86,7 @@
                   } else {
                     this.$toast.error('Tài khoản hoặc mật khẩu không đúng');
                   }
-                  console.log("in login: ", this.userAuth);
+                  console.log("in login: ", this.userAuth.data.user_email);
               } catch (error) {
                   console.log(error);
               }

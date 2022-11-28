@@ -71,7 +71,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <div v-else class="hidden w-full md:block md:w-auto">
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
@@ -104,7 +103,7 @@
 </template>
 <script>
 import { useAuthStore } from '@/store/auth';
-import { adminAuthStore } from '@/store/admin';
+//import { adminAuthStore } from '@/store/admin';
 import { mapActions, mapState } from 'pinia';
 export default {
     methods: {
@@ -117,6 +116,7 @@ export default {
     //         this._logout();
     //         this.$router.push("/admin");
     //     },
+
     },
     
     computed: {
@@ -125,7 +125,6 @@ export default {
             return useAuthStore().userAuth != null;
         },
     },
-
 //     computed: {
 //         ...mapState(adminAuthStore, ["adminAuth"]),
 //         isAdmin() {
