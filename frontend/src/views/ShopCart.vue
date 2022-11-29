@@ -6,7 +6,7 @@
     </div>
     <div>
         <AppCart
-        v-if="filteredCarsCount > 0" :books="filteredCars"
+        v-if="filteredCarsCount > 0" :books="filteredCars" :user_email="this.email"
         />
     </div>
 </template>
@@ -26,12 +26,12 @@ export default {
         isAuth() {
             return useAuthStore().userAuth != null;
         },
-        carsAsStrings() {
+        /*carsAsStrings() {
             return this.books.map((book) => {
                 const { car_name } = book;
                 return [car_name.toLowerCase()].join('');
             });
-        },
+        },*/
         // Return posts filtered by the search box.
         filteredCars() {
             if (!this.searchText) return this.books;
@@ -68,6 +68,7 @@ export default {
                 );
                 */
                 this.books = await carService.seecart(this.email);
+                this.user_email = this.email;
             } catch (error) {
                 console.log(error);
             }

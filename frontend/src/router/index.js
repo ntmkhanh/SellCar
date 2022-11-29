@@ -67,7 +67,7 @@ const routes = [{
         path: '/shopcart/:email',
         name: 'ShopCart',
         component: () =>
-            import ('@/views/ShopCart.vue'),
+            import ('@/views/Cart.vue'),
         props: (route) => ({ email: route.params.email })
     },
     {

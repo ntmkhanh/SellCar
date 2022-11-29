@@ -39,28 +39,30 @@ class BookService {
         return await this.books.where('book_id', id).select('*').first();
     }
     async delete(id) {
-        return await this.books.where('book_id', id).del();
+        await this.books.where('book_id', id).del();
+        return await this.books
+            .where('book_id', id).del();
     }
     async deleteAll() {
         return await this.books.del();
     }
 
     async findByEmail(email) {
-            return await this.books.where('user_email', email).select('*');
+        return await this.books.where('user_email', email).select('*');
     }
 
-        // async delete(id) {
-        //     return await this.books.where('book_id', id).del();
-        // }
-        // async deleteAll() {
-        //     return await this.books.del();
-        // }
-        async getIDcar_user() {
-            return await this.books
-                .select('book.book_id', 'car_id', 'user_id')
-                .join('car', 'car.car_id', 'book.book_id')
-                .leftJoin('user', 'user.user_id', 'book.user_id')
-        }
-    };
+    // async delete(id) {
+    //     return await this.books.where('book_id', id).del();
+    // }
+    // async deleteAll() {
+    //     return await this.books.del();
+    // }
+    async getIDcar_user() {
+        return await this.books
+            .select('book.book_id', 'car_id', 'user_id')
+            .join('car', 'car.car_id', 'book.book_id')
+            .leftJoin('user', 'user.user_id', 'book.user_id')
+    }
+};
 
-    module.exports = BookService;
+module.exports = BookService;

@@ -6,6 +6,7 @@ class CarService {
     constructor() {
         this.baseUrl = `${url}/api/users`;
         this.baseUrlCar = `${url}/api/cars`;
+        this.baseUrlBook = `${url}/api/books`;
 
         this.api = axios.create({
             headers: {
@@ -30,9 +31,15 @@ class CarService {
     async getCar(id) {
         return (await this.api.get(`${this.baseUrlCar}/${id}`)).data;
     }
+    async getBook(id) {
+        return (await this.api.get(`${this.baseUrlBook}/${id}`)).data
+    }
     async seecart(email) {
         return (await this.api.get(`${url}/api/cart/${email}`)).data;
 
+    }
+    async deletebook(id) {
+        return (await this.api.delete(`${url}/api/books/${id}`)).data
     }
 
 }

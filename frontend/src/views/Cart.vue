@@ -5,8 +5,8 @@ import { mapState } from 'pinia';
 export default { 
     data(){
         return {
-            bookLocal: { ...this.book},
-            book: null,
+            bookLocal: { ...this.books},
+            books: [],
         };
     },
     created() {
@@ -17,12 +17,26 @@ export default {
         isAuth() {
             return useAuthStore().userAuth != null;
         },
+        /*carsAsStrings() {
+            return this.books.map((book) => {
+                const { car_name } = book;
+                return [car_name.toLowerCase()].join('');
+            });
+        },*/
+        // Return posts filtered by the search box.
+        filteredCars() {
+            if (!this.searchText) return this.books;
+            return this.books.filter((book, index) =>
+                this.carsAsStrings[index].includes(this.searchText.toLowerCase())
+            );
+        },
+
+        filteredCarsCount() {
+            return this.filteredCars.length;
+        },
     },
-    props: { 
-        books: { type: Array, default: () => [] }, 
-        activeIndex: { type: Number, default: -1 },
-        bookId: { type: Number, required: true},
-        user_email: {type: String, required: true},
+    props: {
+        email: { type: String, required: true},
     },
     emits: ['update:activeIndex'], 
     methods: { 
@@ -33,13 +47,32 @@ export default {
             try {
                 await carService.deletebook(id);
                 this.$toast.success('Delete Sucessful!');
-                this.$router.push('/');
-                this.$router.push(`/shopcart/${this.user_email}`);
+                this.refreshList();
             } catch (error) {
                 console.log(error);
             }
         },
-    }, 
+        async retrieveBooks() {
+            try {
+                /*
+                const postsList = await blogService.getManyPost();
+                this.posts = postsList.sort((current, next) =>
+                    current.post_title.localeCompare(next.post_title)
+                );
+                */
+                this.books = await carService.seecart(this.email);
+                this.user_email = this.email;
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        refreshList() {
+            this.retrieveBooks();
+        },
+    },
+    mounted() {
+        this.refreshList();
+    },
 };
 </script>
 

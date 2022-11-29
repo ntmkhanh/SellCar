@@ -62,6 +62,7 @@ app.route('/api/cart/:email')
 
 app.route('/api/books/:id')
     .get(bookController.findOne)
+    .delete(bookController.delete)
     // .delete(bookController.delete)
 
 
