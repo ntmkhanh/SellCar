@@ -5,11 +5,10 @@ class BookService {
         this.books = knex('book');
         this.cars = knex('car');
         this.users = knex('user')
-    }
-    #getBook(payload) {
+    }#getBook(payload) {
         const book = {...payload };
         const bookProperties = [
-            "user_email", "car_id","itemcar_quantity", "cus_name", "cus_phone"
+            "user_email", "car_id", "itemcar_quantity", "cus_name", "cus_phone"
         ];
         //Remove non-book properties
         Object.keys(book).forEach(function(key) {
@@ -20,14 +19,15 @@ class BookService {
         return book;
     }
     async insertBook(payload) {
-        const book = this.#getBook(payload);
-        const [id] = await this.books.insert(book);
-        return { id, ...book };
+        const car = this.#getBook(payload);
+        const [id] = await this.books.insert(car);
+        return { id, ...car };
     }
+
     async all() {
         return await this.books.select('*');
     }
-    async getallbyID(email) {
+    async getAllbyEmail(email) {
         return await this.books
             .select('*')
             .where('user_email', email);
@@ -41,12 +41,23 @@ class BookService {
     async deleteAll() {
         return await this.books.del();
     }
-    async getIDcar_user() {
-        return await this.books
-            .select('book.book_id', 'car_id', 'user_id')
-            .join('car', 'car.car_id', 'book.book_id')
-            .leftJoin('user', 'user.user_id', 'book.user_id')
-    }
-};
 
-module.exports = BookService;
+        async findByEmail(email) {
+            return await this.books.where('user_email', email).select('*');
+        }
+
+        // async delete(id) {
+        //     return await this.books.where('book_id', id).del();
+        // }
+        // async deleteAll() {
+        //     return await this.books.del();
+        // }
+        async getIDcar_user() {
+            return await this.books
+                .select('book.book_id', 'car_id', 'user_id')
+                .join('car', 'car.car_id', 'book.book_id')
+                .leftJoin('user', 'user.user_id', 'book.user_id')
+        }
+    };
+
+    module.exports = BookService;

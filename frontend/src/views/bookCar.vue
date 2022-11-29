@@ -145,7 +145,7 @@ export default {
                   cus_name: this.name,
                   cus_phone: this.phone,
                 });
-                this.message = 'Successull!';
+                this.$toast.success('Saved');
             } catch (error) {
                 console.log(error);
             }

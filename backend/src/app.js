@@ -56,13 +56,12 @@ app.route('/api/cars/:id')
 app.route('/api/books')
     .post(bookController.createBook)
     .get(bookController.findAll)
-    .delete(bookController.deleteAll)
 
 app.route('/api/cart').get(bookController.seeCartUser)
 
 app.route('/api/books/:id')
     .get(bookController.findOne)
-    .delete(bookController.delete)
+    // .delete(bookController.delete)
 
 
 module.exports = app;

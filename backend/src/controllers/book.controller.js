@@ -2,7 +2,6 @@ const BookService = require('../services/book.service')
 const ApiError = require('../api-error');
 // Create and Save a new Book
 exports.createBook = async(req, res, next) => {
-
     try {
         const bookService = new BookService();
         const book = await bookService.insertBook(req.body);
@@ -87,7 +86,7 @@ exports.deleteAll = async(req, res, next) => {
 exports.seeCartUser = async(req, res, next) => {
     try {
         const bookService = new BookService();
-        const emails = await bookService.getallbyID(req.params.email);
+        const emails = await bookService.getAllbyEmail(req.params.email);
         if (!emails) {
             return next(new ApiError(404, 'User not found'));
         }
