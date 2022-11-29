@@ -66,8 +66,7 @@ export default {
                     <td>{{ book.itemcar_quantity}}</td>
                     <td>{{ book.cus_name }}</td>
                     <td>{{ book.cus_phone }}</td>
-                    <button 
-                        class="btn"
+                    <button class="btn"
                         v-on:click="DeleteBook(book.book_id)"
 
                         >Delete
@@ -79,20 +78,4 @@ export default {
 </template>
 <style scoped>
 
-table, th, td{
-    border:1px solid #868585;
-}
-table{
-    text-align: center;
-    border-collapse:collapse;
-}
-table tr:nth-child(odd){
-    background-color:#eee;
-}
-table tr:nth-child(even){
-    background-color:white;
-}
-table tr:nth-child(1){
-    background-color:skyblue;
-}
 </style>

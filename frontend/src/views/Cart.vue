@@ -77,6 +77,11 @@ export default {
 </script>
 
 <template> 
+        <div class="car-section">
+            <div class="heading">
+                <span>Cart</span>
+            </div>
+        </div>
         <table>
             <tr>
                 <th>No. Cart</th>
@@ -111,13 +116,26 @@ export default {
 
 </template>
 <style scoped>
-
+.heading {
+    text-align: center;
+}
+.heading span {
+    font-family: 'Satisfy', cursive;
+    font-size: 3rem;
+    color: #27ae60;
+}
 table, th, td{
     border:1px solid #868585;
 }
+table, tr{
+    height: 30px;
+}
 table{
     text-align: center;
-    border-collapse:collapse;
+    border-collapse: collapse;
+    margin: 1 auto;
+    width: 100%;
+
 }
 table tr:nth-child(odd){
     background-color:#eee;
@@ -127,5 +145,18 @@ table tr:nth-child(even){
 }
 table tr:nth-child(1){
     background-color:skyblue;
+}
+
+.btn {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+  border-radius: 50%;
+  margin-bottom: 0px;
+}
+
+.btn:hover {
+  background-color: #f44336;
+  color: white;
 }
 </style>

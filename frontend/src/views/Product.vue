@@ -35,6 +35,9 @@ export default {
             searchText: '',
         };
     },
+    watch:{
+
+    },
     computed: {
         // Map posts to strings for searching.
         carsAsStrings() {
