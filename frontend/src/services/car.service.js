@@ -14,8 +14,8 @@ class CarService {
             },
         });
     }
-    async createbook() {
-        return (await this.api.get(`${url}/api/books`)).data;
+    async createbook(book) {
+        return (await this.api.post(`${url}/api/books`, book)).data;
     }
     async signUp(user) {
         return (await this.api.post(`${url}/api/users`, user)).data;
@@ -30,8 +30,8 @@ class CarService {
     async getCar(id) {
         return (await this.api.get(`${this.baseUrlCar}/${id}`)).data;
     }
-    async createCar(car) {
-        return (await this.api.post(`${url}/api/cars`, car)).data;
+    async seecart(email) {
+        return (await this.api.get(`${url}/api/cart/${email}`)).data;
 
     }
 

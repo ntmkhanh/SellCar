@@ -57,8 +57,12 @@ app.route('/api/books')
     .post(bookController.createBook)
     .get(bookController.findAll)
 
-app.route('/api/books/:email')
+app.route('/api/cart/:email')
+    .get(bookController.seeCartUser)
+
+app.route('/api/books/:id')
     .get(bookController.findOne)
     // .delete(bookController.delete)
+
 
 module.exports = app;

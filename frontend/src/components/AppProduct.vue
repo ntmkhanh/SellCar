@@ -35,7 +35,10 @@ export default {
                     <div class="text-gray-900 text-base font-medium mb-2">
                         {{ car.car_type }}
                     </div>
-                    <router-link to="/bookCar">
+                    <router-link :to="{
+                        name: 'bookCar',
+                        params: { carid: car.car_id, namecar: car.car_name },
+                    }">
                         <button class="button" >
                             <span class="bookbtn">
                                 BOOK

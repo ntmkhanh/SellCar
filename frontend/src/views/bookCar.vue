@@ -14,12 +14,12 @@
             <ErrorMessage name="name" class="error-feedback" /> 
         </div> 
         <div class="form-group"> 
-            <label for="price">Phone</label> 
+            <label for="phone">Phone</label> 
             <Field
                 name="phone" 
                 type="text" 
                 class="form-control"
-                v-model="price" 
+                v-model="phone" 
             />
             <ErrorMessage name="phone" class="error-feedback" /> 
         </div> 
@@ -59,7 +59,7 @@
                 name="quantity" 
                 type="text" 
                 class="form-control" 
-                v-model="type" 
+                v-model="quantity" 
             />
             <ErrorMessage name="quantity" class="error-feedback" /> 
         </div> 
@@ -85,7 +85,7 @@
                 Xóa 
             </button> 
         </div>-->
-        <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4">
+        <button class="bg-indigo-600 py-3 px-8 mx-auto rounded-md text-white font-black text-sm my-4" type="submit">
                 Seve Info
         </button>
     </Form> 
@@ -95,16 +95,27 @@
 import * as yup from 'yup'; 
 import { Form, Field, ErrorMessage } from 'vee-validate'; 
 import {carService} from '@/services/car.service'
+import { useAuthStore } from '@/store/auth';
+import {  mapState } from 'pinia';
 export default { 
+    computed: {
+        ...mapState(useAuthStore, ["userAuth"]),
+        isAuth() {
+            return useAuthStore().userAuth != null;
+        },
+    },
+    props: {
+        carid: { type: String, required: true},
+    },
     data() { 
         const formSchema = yup.object().shape({ 
         name: yup 
             .string() 
             .required('Not empty.'),
-        price: yup 
+        phone: yup 
             .string() 
             .required('Not empty.'),
-        type: yup 
+        quantity: yup 
             .string() 
             .required('Not empty.'),
         });
@@ -128,13 +139,14 @@ export default {
     async submitCar() {
             try {
                 await carService.createbook({
-                  book_id: this.book,
-                  user_id: this.user,
-                  car_name: this.name,
-                  car_price: this.price,
-                  car_type: this.type,
+                  user_email: this.userAuth.data.user_email,
+                  car_id: this.carid,
+                  //car_name: this.namecar,
+                  itemcar_quantity: this.quantity,
+                  cus_name: this.name,
+                  cus_phone: this.phone,
                 });
-                this.message = 'Successull!';
+                this.$toast.success('Saved');
             } catch (error) {
                 console.log(error);
             }
@@ -142,6 +154,7 @@ export default {
   },
   components: { Form, Field, ErrorMessage }
 };
+
 </script> 
 
 <style scoped> 

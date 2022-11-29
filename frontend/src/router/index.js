@@ -43,10 +43,12 @@ const routes = [{
             import ('@/views/Register.vue'),
     },
     {
-        path: '/bookCar',
+        path: '/bookCar/:carid',
         name: 'bookCar',
         component: () =>
-            import ('@/views/bookCar.vue')
+            import ('@/views/bookCar.vue'),
+        props: (route) => ({ carid: route.params.carid, /*namecar: route.params.namecar*/ })
+
     },
     {
         path: '/admin',
@@ -62,10 +64,11 @@ const routes = [{
     },
 
     {
-        path: '/shopcart',
+        path: '/shopcart/:email',
         name: 'ShopCart',
         component: () =>
-            import ('@/views/ShopCart.vue')
+            import ('@/views/ShopCart.vue'),
+        props: (route) => ({ email: route.params.email })
     },
     {
         path: '/addcar',
