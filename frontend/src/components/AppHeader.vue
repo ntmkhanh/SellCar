@@ -7,7 +7,7 @@
                     <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Showroom</span>
                 </router-link>
                 <div class="hidden justify-between items-center w-full lg:flex lg:w-auto lg:order-1" id="mobile-menu-2">
-                    <!-- <div v-if="isAdmin" class="hidden w-full md:block md:w-auto">
+                    <div v-if="isAdmin()" class="hidden w-full md:block md:w-auto">
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
                                 <router-link to="/"
@@ -32,11 +32,11 @@
                                 Sign Out</a>
                             </li>
                             <li>
-                                <a>Hello: {{this.adminAuth.data.admin_name}}</a>
+                                <a>Hello: {{this.adminAuth?.data?.admin_name}}</a>
                             </li>
                         </ul>
-                    </div> -->
-                    <div v-if="isAuth" class="hidden w-full md:block md:w-auto">
+                    </div>
+                    <div v-else-if="isAuth()" class="hidden w-full md:block md:w-auto">
                         <ul class="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
                             <li>
                                 <router-link to="/"
@@ -61,7 +61,7 @@
                                 Sign Out</a>
                             </li>
                             <li>
-                                <a>Hello: {{this.userAuth.data.user_name}}</a>
+                                <a>Hello: {{this.userAuth?.data?.user_name}}</a>
                             </li>
                             <li>
                                 <router-link to="/shopcart"
@@ -103,7 +103,7 @@
 </template>
 <script>
 import { useAuthStore } from '@/store/auth';
-//import { adminAuthStore } from '@/store/admin';
+import { adminAuthStore } from '@/store/admin';
 import { mapActions, mapState } from 'pinia';
 export default {
     methods: {
@@ -112,25 +112,25 @@ export default {
             this._logout();
             this.$router.push("/");
         },
-    //     logoutadmin() {
-    //         this._logout();
-    //         this.$router.push("/admin");
-    //     },
-
-    },
-    
-    computed: {
-        ...mapState(useAuthStore, ["userAuth"]),
+        logoutadmin() {
+            this._logout();
+            this.$router.push("/admin");
+        },
         isAuth() {
             return useAuthStore().userAuth != null;
         },
+        isAdmin() {
+            return adminAuthStore().adminAuth != null;
+        },
+
     },
-//     computed: {
-//         ...mapState(adminAuthStore, ["adminAuth"]),
-//         isAdmin() {
-//             return adminAuthStore().adminAuth != null;
-//         },
-//     },
+    computed: {
+        ...mapState(useAuthStore, ["userAuth"]),
+        ...mapState(adminAuthStore, ["adminAuth"]),
+    },
+    computed: {
+        
+    },
 }
 </script>
 <style scoped>
