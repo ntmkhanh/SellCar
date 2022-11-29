@@ -14,40 +14,50 @@ export default {
 </script>
 
 <template> 
-    
         <table>
             <tr>
-                <th>No. Cart    </th>
+                <th>No. Cart</th>
 
-                <th>Email    </th>
+                <th>Car ID</th>
 
-                <th>Car ID    </th>
+                <th>Quantity</th>
 
-                <th>Quantity    </th>
+                <th>Customer name</th>
 
-                <th>Customer name    </th>
-
-                <th>Phone    </th>
+                <th>Phone</th>
             </tr>
             <tr class="list-group-item"
                 v-for="(book, index) in books" 
                 :key="book.user_email" 
                 :class="{ active: index === activeIndex }" 
             >
-                    <td>{{ book.book_id }}    </td>
-                    <td>{{ book.user_name }}   </td>
-                    <td>{{ book.car_id }}    </td>
-                    <td>{{ book.car_quantity}}    </td>
-                    <td>{{ book.cus_name }}    </td>
-                    <td>{{ book.cus_phone }}    </td>
-                    <td><button>Delete</button>    </td>
+                    <td>{{ book.book_id }}</td>
+                    <td>{{ book.car_id }}</td>
+                    <td>{{ book.itemcar_quantity}}</td>
+                    <td>{{ book.cus_name }}</td>
+                    <td>{{ book.cus_phone }}</td>
+                    <button class="btn">Delete</button>
             </tr>
             
         </table>
 
 </template>
-<style>
-tr{
-    padding-right: 15px;
+<style scoped>
+
+table, th, td{
+    border:1px solid #868585;
+}
+table{
+    text-align: center;
+    border-collapse:collapse;
+}
+table tr:nth-child(odd){
+    background-color:#eee;
+}
+table tr:nth-child(even){
+    background-color:white;
+}
+table tr:nth-child(1){
+    background-color:skyblue;
 }
 </style>
