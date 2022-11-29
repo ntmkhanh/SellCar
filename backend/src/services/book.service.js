@@ -19,9 +19,9 @@ class BookService {
         return book;
     }
     async insertBook(payload) {
-        const car = this.#getBook(payload);
-        const [id] = await this.books.insert(car);
-        return { id, ...car };
+        const book = this.#getBook(payload);
+        const [id] = await this.books.insert(book);
+        return { id, ...book };
     }
 
     async all() {
