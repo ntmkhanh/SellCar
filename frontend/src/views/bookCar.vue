@@ -141,6 +141,7 @@ export default {
                 await carService.createbook({
                   user_email: this.userAuth.data.user_email,
                   car_id: this.carid,
+                  //car_name: this.namecar,
                   itemcar_quantity: this.quantity,
                   cus_name: this.name,
                   cus_phone: this.phone,

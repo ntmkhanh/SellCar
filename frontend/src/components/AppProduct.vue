@@ -37,7 +37,7 @@ export default {
                     </div>
                     <router-link :to="{
                         name: 'bookCar',
-                        params: { carid: car.car_id },
+                        params: { carid: car.car_id, namecar: car.car_name },
                     }">
                         <button class="button" >
                             <span class="bookbtn">

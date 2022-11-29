@@ -14,37 +14,40 @@ export default {
 </script>
 
 <template> 
-    <ul class="list-group"> 
-        <li 
-            class="list-group-item"
-            v-for="(book, index) in books" 
-            :key="book.book_id" 
-            :class="{ active: index === activeIndex }"  
-        > 
-        <div class="rounded-lg shadow-lg bg-white max-w-xl my-2 object">
-            <table>
-                <tr>
-                    <td>
-                        {{ book.book_id }}
-                    </td>
-                    <td>
-                        {{ book.user_id }}
-                    </td>
-                    <td>
-                        {{ book.car_id }}
-                    </td>
-                    <td>
-                        {{ book.cus_name }}
-                    </td>     
-                    <td>
-                        {{ book.cus_phone }} 
-                    </td> 
-                    <td>
-                        {{ book.car_quantity}}
-                    </td>              
-                </tr>
-            </table>
-        </div>
-        </li> 
-    </ul> 
+    
+        <table>
+            <tr>
+                <th>No. Cart    </th>
+
+                <th>Email    </th>
+
+                <th>Car ID    </th>
+
+                <th>Quantity    </th>
+
+                <th>Customer name    </th>
+
+                <th>Phone    </th>
+            </tr>
+            <tr class="list-group-item"
+                v-for="(book, index) in books" 
+                :key="book.user_email" 
+                :class="{ active: index === activeIndex }" 
+            >
+                    <td>{{ book.book_id }}    </td>
+                    <td>{{ book.user_name }}   </td>
+                    <td>{{ book.car_id }}    </td>
+                    <td>{{ book.car_quantity}}    </td>
+                    <td>{{ book.cus_name }}    </td>
+                    <td>{{ book.cus_phone }}    </td>
+                    <td><button>Delete</button>    </td>
+            </tr>
+            
+        </table>
+
 </template>
+<style>
+tr{
+    padding-right: 15px;
+}
+</style>

@@ -5,7 +5,9 @@
         </div>
     </div>
     <div>
-        <AppCart />
+        <AppCart
+        v-if="filteredCarsCount > 0" :books="filteredCars"
+        />
     </div>
 </template>
 
@@ -13,7 +15,35 @@
 
 import { carService } from "@/services/car.service";
 import AppCart from "@/components/AppCart.vue";
+import { useAuthStore } from '@/store/auth';
+import {  mapState } from 'pinia';
 export default {
+    props: {
+        email: { type: String, required: true},
+    },
+    computed: {
+        ...mapState(useAuthStore, ["userAuth"]),
+        isAuth() {
+            return useAuthStore().userAuth != null;
+        },
+        carsAsStrings() {
+            return this.books.map((book) => {
+                const { car_name } = book;
+                return [car_name.toLowerCase()].join('');
+            });
+        },
+        // Return posts filtered by the search box.
+        filteredCars() {
+            if (!this.searchText) return this.books;
+            return this.books.filter((book, index) =>
+                this.carsAsStrings[index].includes(this.searchText.toLowerCase())
+            );
+        },
+
+        filteredCarsCount() {
+            return this.filteredCars.length;
+        },
+    },
     components: {
         AppCart,
         
@@ -21,7 +51,7 @@ export default {
     //The full code will be presented below
     data() {
         return {
-            cars: [],
+            books: [],
         };
     },
     watch: {
@@ -37,7 +67,7 @@ export default {
                     current.post_title.localeCompare(next.post_title)
                 );
                 */
-                this.cars = await carService.getBookID();
+                this.books = await carService.seecart(this.email);
             } catch (error) {
                 console.log(error);
             }

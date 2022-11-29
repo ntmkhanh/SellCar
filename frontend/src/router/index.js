@@ -47,7 +47,8 @@ const routes = [{
         name: 'bookCar',
         component: () =>
             import ('@/views/bookCar.vue'),
-        props: (route) => ({ carid: route.params.carid })
+        props: (route) => ({ carid: route.params.carid, /*namecar: route.params.namecar*/ })
+
     },
     {
         path: '/admin',
@@ -63,10 +64,11 @@ const routes = [{
     },
 
     {
-        path: '/shopcart',
+        path: '/shopcart/:email',
         name: 'ShopCart',
         component: () =>
-            import ('@/views/ShopCart.vue')
+            import ('@/views/ShopCart.vue'),
+        props: (route) => ({ email: route.params.email })
     },
     {
         path: '/addcar',

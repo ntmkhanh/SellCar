@@ -24,7 +24,6 @@ import AppProduct from "@/components/AppProduct.vue";
 import { carService } from "@/services/car.service";
 import InputSearch from "@/components/InputSearch.vue";
 export default {
-
     components: {
         InputSearch,
         AppProduct,
@@ -35,10 +34,6 @@ export default {
             cars: [],
             searchText: '',
         };
-    },
-    watch: {
-        // Monitor changes on searchText
-        // Release the currently selected post
     },
     computed: {
         // Map posts to strings for searching.

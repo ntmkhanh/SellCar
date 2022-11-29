@@ -30,8 +30,8 @@ class CarService {
     async getCar(id) {
         return (await this.api.get(`${this.baseUrlCar}/${id}`)).data;
     }
-    async createCar(car) {
-        return (await this.api.post(`${url}/api/cars`, car)).data;
+    async seecart(email) {
+        return (await this.api.get(`${url}/api/cart/${email}`)).data;
 
     }
 

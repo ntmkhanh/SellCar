@@ -27,11 +27,14 @@ class BookService {
     async all() {
         return await this.books.select('*');
     }
+
     async getAllbyEmail(email) {
         return await this.books
             .select('*')
+            //.join('car', 'book.car_id','car.car_id')
             .where('user_email', email);
     }
+
     async findById(id) {
         return await this.books.where('book_id', id).select('*').first();
     }
@@ -42,9 +45,9 @@ class BookService {
         return await this.books.del();
     }
 
-        async findByEmail(email) {
+    async findByEmail(email) {
             return await this.books.where('user_email', email).select('*');
-        }
+    }
 
         // async delete(id) {
         //     return await this.books.where('book_id', id).del();

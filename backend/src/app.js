@@ -57,7 +57,8 @@ app.route('/api/books')
     .post(bookController.createBook)
     .get(bookController.findAll)
 
-app.route('/api/cart').get(bookController.seeCartUser)
+app.route('/api/cart/:email')
+    .get(bookController.seeCartUser)
 
 app.route('/api/books/:id')
     .get(bookController.findOne)
