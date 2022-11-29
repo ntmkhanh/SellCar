@@ -11,5 +11,6 @@ const pinia = createPinia()
 const app = createApp(App);
 app.use(router);
 app.use(pinia)
-app.use(Toaster)
+    //chinh thong bao
+app.use(Toaster, { positions: 'toast-top-right', duration: 1000 })
 app.mount('#app')
