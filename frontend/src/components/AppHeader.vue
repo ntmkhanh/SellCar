@@ -128,9 +128,6 @@ export default {
         ...mapState(useAuthStore, ["userAuth"]),
         ...mapState(adminAuthStore, ["adminAuth"]),
     },
-    computed: {
-        
-    },
 }
 </script>
 <style scoped>
