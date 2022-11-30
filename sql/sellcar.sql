@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2022 at 11:12 AM
+-- Generation Time: Nov 30, 2022 at 05:51 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -24,23 +24,39 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin`
+--
+
+CREATE TABLE `admin` (
+  `admin_id` int(11) NOT NULL,
+  `admin_name` varchar(255) NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `admin_password` varchar(255) NOT NULL,
+  `admin_phone` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`admin_id`, `admin_name`, `admin_email`, `admin_password`, `admin_phone`) VALUES
+(1, 'Nguyen Thi My Khanh', 'khanh@gmail.com', '123456', ''),
+(2, 'Nguyen Hieu Nghia', 'nghia@gmail.com', '123456', '');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `book`
 --
 
 CREATE TABLE `book` (
-  `book_id` int(11) DEFAULT NULL,
-  `user_id` int(11) NOT NULL,
+  `book_id` int(11) NOT NULL,
+  `user_email` varchar(50) NOT NULL,
   `car_id` int(11) NOT NULL,
-  `itemcar_quantity` int(11) DEFAULT NULL
+  `itemcar_quantity` int(11) DEFAULT NULL,
+  `cus_name` varchar(50) NOT NULL,
+  `cus_phone` int(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `book`
---
-
-INSERT INTO `book` (`book_id`, `user_id`, `car_id`, `itemcar_quantity`) VALUES
-(2, 3, 1, 2),
-(1, 10, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -63,10 +79,10 @@ CREATE TABLE `car` (
 INSERT INTO `car` (`car_id`, `car_name`, `car_price`, `car_type`, `car_src`) VALUES
 (1, 'EQS', '4.839.000.000', 'Sedans', './img/EQS.png'),
 (2, 'A-Class', '2.429.000.000', 'Sedans', './img/aclass.png'),
-(3, 'C-Class', '1.669.000.000', 'Sedans', './img/aclass.png'),
+(3, 'C-Class', '1.669.000.000', 'Sedans', './img/cclass.png'),
 (4, 'E-Class', '2.050.000.000', 'Sedans', './img/eclass.png'),
 (5, 'S-Class', '5.059.000.000', 'Sedans', './img/sclass.png'),
-(6, 'Mercedes-Maybach Class', '8.199.000.000', 'Sedans', './img/machbachscalss.png'),
+(6, 'Mercedes-Maybach S-Class', '8.199.000.000', 'Sedans', './img/machbachscalss.png'),
 (7, 'GLA SUV', '3.430.000.000', 'SUV', './img/glasuv.png'),
 (8, 'GLB', '2.069.000.000', 'SUV', './img/glb.png'),
 (9, 'GLC', '1.859.000.000', 'SUV', './img/glc.png'),
@@ -77,7 +93,7 @@ INSERT INTO `car` (`car_id`, `car_name`, `car_price`, `car_type`, `car_src`) VAL
 (14, 'G-Class', '10.950.000.000', 'SUV', './img/gclass.png'),
 (15, 'Mercedes-Maybach GLS', '8.399.000.000', 'SUV', './img/machbaygls.png'),
 (16, 'Mercedes-AMG GT Coupé', '11.590.000.000', 'Coupés', './img/gtcou.png'),
-(17, 'Mercedes-AMG Coupé', '6.719.000.000', 'Coupés', './img/gt4coupe.png'),
+(17, 'Mercedes-AMG GT 4-door Coupé', '6.719.000.000', 'Coupés', './img/gt4coupe.png'),
 (18, 'V-Class', '2.828.000.000', 'MPV', './img/vclass.png');
 
 -- --------------------------------------------------------
@@ -104,17 +120,30 @@ INSERT INTO `user` (`user_id`, `user_name`, `user_email`, `user_phone`, `user_pa
 (1, 'Nguyen Thi My Khanh', 'khanhb1910657@student.ctu.edu.vn', '0976038762', '123456', '01-01-2001', 'female'),
 (2, 'Nguyen Hieu Nghia', 'nghia0976038762', NULL, '123456', '01-01-2001', 'male'),
 (3, 'Nguyen Hieu Nghia', 'nghia0976038762', NULL, '123456', '01-01-2001', 'male'),
-(4, 'Nguyen Hieu Nghia', 'nghia0976038762', NULL, '123456', '01-01-2001', 'male');
+(4, 'Nguyen Hieu Nghia', 'nghia0976038762', NULL, '123456', '01-01-2001', 'male'),
+(5, 'Nguyen Hieu Nghia', 'nghia0976038762', NULL, '123456', '01-01-2001', 'male'),
+(6, 'Nguyen hieu nghia', 'nghia@gmail.com', '0773856998', '123456', '2001-05-04', 'Male'),
+(7, 'test', 'test@gmail.com', '0976038762', '123456', '2022-11-30', 'female'),
+(8, 'Khanh Nguyen', 'mykhanhangiang@gmail.com', '0976038762', '123456', '2022-11-30', 'female'),
+(9, 'Khanh Nguyen', 'mykhanhangiang@gmail.com', '0976038762', '123456', '2022-11-30', 'female'),
+(10, 'Khanh Nguyen', 'mykhanhangiang@gmail.com', '0976038762', '123456', '2022-11-30', 'female'),
+(11, 'Khanh Nguyen', 'mykhanhangiang@gmail.com', '0976038762', '123456', '2022-11-30', 'female');
 
 --
 -- Indexes for dumped tables
 --
 
 --
+-- Indexes for table `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`admin_id`);
+
+--
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
-  ADD PRIMARY KEY (`user_id`,`car_id`);
+  ADD PRIMARY KEY (`book_id`);
 
 --
 -- Indexes for table `car`
@@ -133,16 +162,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `book`
+--
+ALTER TABLE `book`
+  MODIFY `book_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
