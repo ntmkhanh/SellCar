@@ -22,16 +22,6 @@
 <script setup>
 import '@/assets/home.css'
 </script>
-
- <!-- <template> 
-  <div id="app">
-    <div id="nav">
-      <AppHeader /> -->
-      <!-- <AppNavar />  -->
-    <!-- </div>
-    <router-view />
-  </div>
-</template>   -->
 <template>
   <div id="app">
       <div v-if="admin">

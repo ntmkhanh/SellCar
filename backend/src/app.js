@@ -27,8 +27,8 @@ app.use((err, req, res, next) => {
         message: err.message || 'Internal Server Error',
     });
 });
-app.route('/api/admins')
-    .post(adminController.createAccount)
+// app.route('/api/admins')
+//     .post(adminController.createAccount)
 
 app.route('/api/adminLogin')
     .post(adminController.signIn)
