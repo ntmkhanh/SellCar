@@ -107,4 +107,5 @@ export default {
     grid-template-columns: auto auto auto;
     padding: 10px;
 }
+
 </style>

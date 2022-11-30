@@ -4,11 +4,11 @@
             <span>Cart</span>
         </div>
     </div>
-    <div>
-        <AppCart
-        v-if="filteredCarsCount > 0" :books="filteredCars" :user_email="this.email"
-        />
-    </div>
+        <div class="table">
+            <AppCart
+            v-if="filteredCarsCount > 0" :books="filteredCars" :user_email="this.email"
+            />
+        </div>
 </template>
 
 <script>
@@ -84,13 +84,4 @@ export default {
 </script>
 
 <style scoped>
-.heading {
-    text-align: center;
-    padding-bottom: 2rem;
-}
-.heading span {
-    font-family: 'Satisfy', cursive;
-    font-size: 3rem;
-    color: #27ae60;
-}
 </style>

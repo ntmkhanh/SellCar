@@ -1,5 +1,5 @@
 <template> 
-    <Form
+    <Form class="container"
         @submit="submitCar" 
         :validation-schema="formSchema" 
     > 

@@ -9,7 +9,7 @@ exports.createBook = async(req, res, next) => {
     } catch (error) {
         console.log(error);
         return next(
-            new ApiError(500, 'An error occurred while creating the contact')
+            new ApiError(500, 'An error occurred while creating the book')
         );
     }
 };
@@ -30,20 +30,6 @@ exports.delete = async(req, res, next) => {
                 `Could not delete contact with id=${req.params.id}`
             )
         );
-    }
-};
-exports.deleteAll = async(req, res, next) => {
-    try {
-        const bookService = new BookService()
-        const deleted = await bookService.deleteAll()
-        return res.send({
-            message: `${deleted} contacts were deleted successfully`
-        })
-    } catch (error) {
-        console.log(error)
-        return next(
-            new ApiError(500, 'An error occurred while removing all contacts')
-        )
     }
 };
 

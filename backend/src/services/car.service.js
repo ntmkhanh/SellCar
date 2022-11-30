@@ -3,7 +3,8 @@ const knex = require('../database/knex.js');
 class CarService {
     constructor() {
         this.cars = knex('car');
-    }#getCar(payload) {
+    }
+    #getCar(payload) {
             const car = {...payload };
             const carProperties = ["car_id", "car_name", "car_price", "car_type", "car_src"];
             //Remove non-car properties
@@ -30,13 +31,6 @@ class CarService {
     }
     async findById(id) {
         return await this.cars.where('car_id', id).select('*').first();
-    }
-
-    async delete(id) {
-        return await this.cars.where('car_id', id).del();
-    }
-    async deleteAll() {
-        return await this.cars.del();
     }
 }
 
