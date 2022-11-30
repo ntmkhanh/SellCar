@@ -45,6 +45,7 @@ exports.createAccount = async(req, res, next) => {
         );
     }
 };
+
 exports.findAll = async(req, res, next) => {
     let users = []
 

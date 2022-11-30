@@ -70,12 +70,12 @@ const routes = [{
             import ('@/views/Cart.vue'),
         props: (route) => ({ email: route.params.email })
     },
-    {
-        path: '/addcar',
-        name: 'AddCar',
-        component: () =>
-            import ('@/views/AddCar.vue')
-    },
+    // {
+    //     path: '/addcar',
+    //     name: 'AddCar',
+    //     component: () =>
+    //         import ('@/views/AddCar.vue')
+    // },
 
 ];
 
