@@ -35,6 +35,10 @@ export default {
             searchText: '',
         };
     },
+    watch: {
+        // Monitor changes on searchText
+        // Release the currently selected post
+    },
     computed: {
         // Map posts to strings for searching.
         carsAsStrings() {
@@ -58,12 +62,6 @@ export default {
     methods: {
         async retrieveCars() {
             try {
-                /*
-                const postsList = await blogService.getManyPost();
-                this.posts = postsList.sort((current, next) =>
-                    current.post_title.localeCompare(next.post_title)
-                );
-                */
                 this.cars = await carService.getAllCar();
             } catch (error) {
                 console.log(error);

@@ -12,5 +12,5 @@ const app = createApp(App);
 app.use(router);
 app.use(pinia)
     //chinh thong bao
-app.use(Toaster, { positions: 'toast-top-right', duration: 1000 })
+app.use(Toaster, { position: 'top-right', duration: 1000 })
 app.mount('#app')

@@ -1,3 +1,0 @@
-<template>
-    ADD CAR
-</template>

@@ -33,7 +33,7 @@ export default {
             try {
                 await carService.deletebook(id);
                 this.$toast.success('Delete Sucessful!');
-                this.$router.push('/');
+                
                 this.$router.push(`/shopcart/${this.user_email}`);
             } catch (error) {
                 console.log(error);
@@ -46,6 +46,8 @@ export default {
 <template> 
         <table>
             <tr>
+                <th>Email</th>
+
                 <th>No. Cart</th>
 
                 <th>Car ID</th>
@@ -61,6 +63,7 @@ export default {
                 :key="book.user_email" 
                 :class="{ active: index === activeIndex }" 
             >
+                    <td>{{ book.user_email}}</td>
                     <td>{{ book.book_id }}</td>
                     <td>{{ book.car_id }}</td>
                     <td>{{ book.itemcar_quantity}}</td>
