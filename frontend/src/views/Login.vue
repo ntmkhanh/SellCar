@@ -82,9 +82,9 @@
                   });
                   if(this.userAuth != null){
                     this.$router.push("/");
-                    this.$toast.success('Đăng nhập thành công');
+                    this.$toast.success('Login sucessfull');
                   } else {
-                    this.$toast.error('Tài khoản hoặc mật khẩu không đúng');
+                    this.$toast.error('Account or password wrong?');
                   }
                   console.log("in login: ", this.userAuth.data.user_email);
               } catch (error) {

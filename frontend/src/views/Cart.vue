@@ -84,6 +84,8 @@ export default {
         </div>
         <table>
             <tr>
+                <th>Email </th>
+
                 <th>No. Cart</th>
 
                 <th>Car ID</th>
@@ -99,6 +101,7 @@ export default {
                 :key="book.user_email" 
                 :class="{ active: index === activeIndex }" 
             >
+                    <td>{{book.user_email}}</td>
                     <td>{{ book.book_id }}</td>
                     <td>{{ book.car_id }}</td>
                     <td>{{ book.itemcar_quantity}}</td>

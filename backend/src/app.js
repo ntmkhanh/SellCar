@@ -44,24 +44,20 @@ app.route('/api/userLogin')
 //     .get(userController.findOne)
 
 app.route('/api/cars')
-    .post(carController.createCar)
     .get(carController.findAll)
-    .delete(carController.deleteAll)
 
 app.route('/api/cars/:id')
-    .delete(carController.delete)
     .get(carController.findOne)
-    .put(carController.update)
 
 app.route('/api/books')
     .post(bookController.createBook)
-    .get(bookController.findAll)
+app.route('/api/books/:id')
+    .delete(bookController.delete)
 
 app.route('/api/cart/:email')
     .get(bookController.seeCartUser)
 
 app.route('/api/books/:id')
-    .get(bookController.findOne)
     .delete(bookController.delete)
     // .delete(bookController.delete)
 

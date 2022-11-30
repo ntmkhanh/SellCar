@@ -95,9 +95,9 @@ export default {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 @keyframes color { 
-	 0% { color: #25d2dc;  } 
-	 50% { color: rgb(188, 216, 26);  }
-	 100% { color: #3ed81b;  } 
+	0% { color: #25d2dc;  } 
+	50% { color: rgb(188, 216, 26);  }
+	100% { color: #3ed81b;  } 
  } 
 
 .home-main .content span{
@@ -106,9 +106,9 @@ export default {
   font-family: 'Satisfy', cursive;
   font-size: 100px;
   -webkit-animation: color 1000ms infinite;
-	 -moz-animation: color 1000ms infinite; 
-	 -o-animation: color 1000ms infinite; 
-	 animation: color 1000ms infinite;
+	-moz-animation: color 1000ms infinite; 
+	-o-animation: color 1000ms infinite; 
+	animation: color 1000ms infinite;
 }
 
 .home-main .image {
